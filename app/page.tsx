@@ -4,10 +4,12 @@ import HomeSlider from "./home/homeSlider";
 
 export default function Home() {
   return (
-    <div className="bg-primary dark:bg-primary">
-      <HomeSlider/>
-      <Collections/>
-      <BestProducts/>
+    <div>
+      <HomeSlider />
+      <div className="p-20">
+        <Collections />
+        <BestProducts />
+      </div>
     </div>
-  )
+  );
 }

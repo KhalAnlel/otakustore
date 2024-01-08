@@ -11,13 +11,13 @@ const list = [
   {
     id: 2,
     title: "BTS TinyTAN Nendoroid | Good Smile No.1807 Jung Kook",
-    img: "https://otakusshop.com/cdn/shop/files/61DWIrXsklL._AC_SL1500_600x.jpg?v=1704382568",
+    img: "https://otakusshop.com/cdn/shop/files/image_900x_83eeb675-32d0-439a-8382-3d1a56b9a810_300x.webp?v=1697371679",
     price: "$3.00",
   },
   {
     id: 3,
     title: "Banpresto Demon Slayer: Kimetsu No Yaiba Vol.19 Tanjiro Kamado Figure",
-    img: "https://otakusshop.com/cdn/shop/files/51anSeVC3yL._AC_SL1281_500x.jpg?v=1703626585",
+    img: "https://otakusshop.com/cdn/shop/files/Untitled-1_copy_300x.jpg?v=1614729552",
     price: "$3.00",
   },
   {
@@ -29,13 +29,13 @@ const list = [
   {
     id: 5,
     title: "BTS TinyTAN Nendoroid | Good Smile No.1807 Jung Kook",
-    img: "https://otakusshop.com/cdn/shop/files/61DWIrXsklL._AC_SL1500_600x.jpg?v=1704382568",
+    img: "https://otakusshop.com/cdn/shop/files/image_900x_83eeb675-32d0-439a-8382-3d1a56b9a810_300x.webp?v=1697371679",
     price: "$3.00",
   },
   {
     id: 6,
     title: "Banpresto Demon Slayer: Kimetsu No Yaiba Vol.19 Tanjiro Kamado Figure",
-    img: "https://otakusshop.com/cdn/shop/files/51anSeVC3yL._AC_SL1281_500x.jpg?v=1703626585",
+    img: "https://otakusshop.com/cdn/shop/files/Untitled-1_copy_300x.jpg?v=1614729552",
     price: "$3.00",
   },
 
@@ -72,8 +72,8 @@ const BestProducts = () => {
           <div className="w-full h-44 flex bg-white border-1 items-center p-5 gap-4" key={index}>
             <img src={item.img} className="w-24 h-24" />
             <div className="flex flex-col gap-4">
-              <Link href="#" className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-red-800">{item.title}</Link>
-              <span  className="text-xl  text-red-800">{item.price}</span>
+              <Link href="#" className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-danger">{item.title}</Link>
+              <span  className="text-xl  text-danger">{item.price}</span>
             </div>
           </div>
         ))}
