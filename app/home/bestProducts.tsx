@@ -1,69 +1,17 @@
 import { Button, Link } from "@nextui-org/react";
 import React from "react";
+import LiftArrow from "../icons/liftArrow";
+import list from '../data/productsList'
 
-const list = [
-  {
-    id: 1,
-    title: "One Piece Thousand Sunny Grand Ship Model Kit",
-    img: "https://otakusshop.com/cdn/shop/files/img_304920_8e775af58a910d2ba260a0ea8dc8ceea_1_600x.jpg?v=1704383818",
-    price: "$13.00",
-  },
-  {
-    id: 2,
-    title: "BTS TinyTAN Nendoroid | Good Smile No.1807 Jung Kook",
-    img: "https://otakusshop.com/cdn/shop/files/image_900x_83eeb675-32d0-439a-8382-3d1a56b9a810_300x.webp?v=1697371679",
-    price: "$3.00",
-  },
-  {
-    id: 3,
-    title: "Banpresto Demon Slayer: Kimetsu No Yaiba Vol.19 Tanjiro Kamado Figure",
-    img: "https://otakusshop.com/cdn/shop/files/Untitled-1_copy_300x.jpg?v=1614729552",
-    price: "$3.00",
-  },
-  {
-    id: 4,
-    title: "One Piece Thousand Sunny Grand Ship Model Kit",
-    img: "https://otakusshop.com/cdn/shop/files/img_304920_8e775af58a910d2ba260a0ea8dc8ceea_1_600x.jpg?v=1704383818",
-    price: "$13.00",
-  },
-  {
-    id: 5,
-    title: "BTS TinyTAN Nendoroid | Good Smile No.1807 Jung Kook",
-    img: "https://otakusshop.com/cdn/shop/files/image_900x_83eeb675-32d0-439a-8382-3d1a56b9a810_300x.webp?v=1697371679",
-    price: "$3.00",
-  },
-  {
-    id: 6,
-    title: "Banpresto Demon Slayer: Kimetsu No Yaiba Vol.19 Tanjiro Kamado Figure",
-    img: "https://otakusshop.com/cdn/shop/files/Untitled-1_copy_300x.jpg?v=1614729552",
-    price: "$3.00",
-  },
-
-];
-
-const arrowLift = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    className="w-4 h-4"
-  >
-    <path
-      fillRule="evenodd"
-      d="M15 8A7 7 0 1 0 1 8a7 7 0 0 0 14 0ZM4.75 7.25a.75.75 0 0 0 0 1.5h4.69L8.22 9.97a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 0 0-1.06 1.06l1.22 1.22H4.75Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
 
 const BestProducts = () => {
   return (
-    <div className="flex flex-col mt-20 p-10">
+    <div className="flex flex-col mt-20">
       <div className="flex items-center justify-between">
-        <span className="text-black dark:text-white text-xl font-semibold">
+        <span className="text-black text-xl font-semibold">
           Best Products This Month
         </span>
-        <Button color="danger" endContent={arrowLift}>
+        <Button color="danger" endContent={<LiftArrow/>}>
           View All
         </Button>
       </div>
@@ -72,8 +20,9 @@ const BestProducts = () => {
           <div className="w-full h-44 flex bg-white border-1 items-center p-5 gap-4" key={index}>
             <img src={item.img} className="w-24 h-24" />
             <div className="flex flex-col gap-4">
+              <span className="text-gray-500">Type of Product</span>
               <Link href="#" className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-danger">{item.title}</Link>
-              <span  className="text-xl  text-danger">{item.price}</span>
+              <span  className="text-xl  text-danger">${item.price}</span>
             </div>
           </div>
         ))}

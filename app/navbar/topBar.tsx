@@ -17,8 +17,8 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import categories from "../data/categories";
-import CartIcon from "../components/cartIcon";
-import FavIcon from "../components/favIcon";
+import CartIcon from "../icons/cartIcon";
+import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../components/themeSwitcher";
 import Search from "./search";
 
@@ -43,7 +43,7 @@ const TopBar = () => {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-primary dark:bg-primary"
+      className="bg-lightgray dark:bg-midnightblue"
     >
       <NavbarContent>
         <NavbarMenuToggle
@@ -72,7 +72,7 @@ const TopBar = () => {
           </Badge>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="bg-primary">
+      <NavbarMenu className="bg-lightgray">
         {categories.map((category, index) => (
           <NavbarMenuItem key={index}>
             <Dropdown>

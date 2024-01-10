@@ -8,21 +8,20 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    
-  },
   darkMode: "class",
   plugins: [
     nextui({
       themes: {
         light: {
           colors: {
-            primary: "#F7F7F7",
+            lightgray: "#F7F7F7",
           }
         },
         dark: {
           colors: {
-            primary: "#161A30",
+            midnightblue: "#161A30",
+            silver:"#EDEDED",
+            lightgray:"#F7F7F7"
           }
         },
       },
