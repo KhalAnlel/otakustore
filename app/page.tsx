@@ -1,19 +1,7 @@
-import BestProducts from "./home/bestProducts";
-import Collections from "./home/collections";
-import HomeSlider from "./home/homeSlider";
-import PopularProducts from "./home/popularProducts";
-import ProductOfTheWeek from "./home/productOfTheWeek";
+import Home from "./home/page";
 
-export default function Home() {
+export default function app() {
   return (
-    <div>
-      <HomeSlider />
-      <div className="p-5 sm:p-10">
-        <Collections />
-        <BestProducts />
-        <PopularProducts/>
-        <ProductOfTheWeek/>
-      </div>
-    </div>
+    <Home/>
   );
 }

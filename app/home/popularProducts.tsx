@@ -31,7 +31,7 @@ const Product = ({ list }: { list: Props }) => {
 
 const PopularProducts = () => {
   return (
-    <div className="flex flex-col mt-20">
+    <div className="flex flex-col mt-20 sm:mt-30 p-10 sm:p-20">
       <div className="flex items-center justify-between">
         <span className="text-black text-xl font-semibold">
           Popular Products

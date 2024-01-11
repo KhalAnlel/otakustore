@@ -39,6 +39,7 @@ const arrowDown = (
 
 const TopBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openFav, setOpenFav] = useState(false);
 
   return (
     <Navbar
@@ -51,24 +52,42 @@ const TopBar = () => {
           className="md:hidden text-black dark:text-white"
         />
         <NavbarBrand>
-          <p className="font-bold text-black dark:text-white">LOGO</p>
+          <p className="font-bold text-black dark:text-white"><Link href="/">LOGO</Link></p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent as="div" className="hidden sm:flex gap-4" justify="center">
-       <Search/>
+        <Search />
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className="gap-2">
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem>
           <Badge color="danger" content={0} shape="circle">
-            <FavIcon />
+            <Dropdown>
+              <DropdownTrigger>
+                <Button className="border-none" variant="ghost" size="sm">
+                  <FavIcon />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="items">no items in fav</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </Badge>
         </NavbarItem>
         <NavbarItem>
-          <Badge color="danger" content={0} shape="circle">
-            <CartIcon />
+        <Badge color="danger" content={0} shape="circle">
+            <Dropdown>
+              <DropdownTrigger>
+                <Button className="border-none" variant="ghost" size="sm">
+                  <CartIcon />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="items">no items in cart</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </Badge>
         </NavbarItem>
       </NavbarContent>
@@ -89,14 +108,16 @@ const TopBar = () => {
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
-                <DropdownItem className="text-black dark:bg-zinc-700">Item</DropdownItem>
+                <DropdownItem className="text-black dark:bg-zinc-700">
+                  Item
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </NavbarMenuItem>
         ))}
-      <NavbarMenuItem className="mt-10">
-        <Search/>
-      </NavbarMenuItem>
+        <NavbarMenuItem className="mt-10">
+          <Search />
+        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );

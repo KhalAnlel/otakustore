@@ -7,16 +7,20 @@ import list from '../data/productsList'
 import LiftArrow from "../icons/liftArrow";
 import "swiper/css";
 
-export default function Collections() {
+export default function TopCollections() {
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-10 p-10 sm:p-20">
       <div className="flex items-center justify-between">
         <span className="text-black text-xl font-semibold">
           Collections
         </span>
         <Button color="danger" endContent={<LiftArrow/>}>
+          <Link  href="/collections">
+          
           View All
+
+          </Link>
         </Button>
       </div>
       <div className="flex gap-10 justify-center mt-10">
@@ -50,7 +54,7 @@ export default function Collections() {
                   alt={item.title}
                 />
                 <Link
-                  href={"#"}
+                  href="#"
                   className="text-black font-semibold mt-5 hover:text-danger"
                 >
                   {item.title}

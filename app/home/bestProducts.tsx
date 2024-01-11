@@ -6,7 +6,7 @@ import list from '../data/productsList'
 
 const BestProducts = () => {
   return (
-    <div className="flex flex-col mt-20">
+    <div className="flex flex-col mt-10 p-10 sm:p-20">
       <div className="flex items-center justify-between">
         <span className="text-black text-xl font-semibold">
           Best Products This Month
