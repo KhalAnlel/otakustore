@@ -11,12 +11,12 @@ const Home = () => {
   return (
     <div>
       <HomeSlider />
-        <TopCollections />
-        <BestProducts />
-        <Promo/>
-        <PopularProducts />
-        <ProductOfTheWeek />
-        <LogoClouds/>
+      <TopCollections />
+      <BestProducts />
+      <Promo />
+      <PopularProducts />
+      <ProductOfTheWeek />
+      <LogoClouds />
     </div>
   );
 };

@@ -19,7 +19,7 @@ import {
 import categories from "../data/categories";
 import CartIcon from "../icons/cartIcon";
 import FavIcon from "../icons/favIcon";
-import { ThemeSwitcher } from "../components/themeSwitcher";
+import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "./search";
 
 const arrowDown = (
@@ -44,7 +44,7 @@ const TopBar = () => {
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
-      className="bg-lightgray dark:bg-midnightblue"
+      className="bg-silver dark:bg-midnightblue"
     >
       <NavbarContent>
         <NavbarMenuToggle
@@ -52,7 +52,11 @@ const TopBar = () => {
           className="md:hidden text-black dark:text-white"
         />
         <NavbarBrand>
-          <p className="font-bold text-black dark:text-white"><Link href="/">LOGO</Link></p>
+          <p>
+            <Link href="/" className="font-bold text-black dark:text-white">
+              LOGO
+            </Link>
+          </p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent as="div" className="hidden sm:flex gap-4" justify="center">
@@ -63,12 +67,12 @@ const TopBar = () => {
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem>
-          <Badge color="danger" content={0} shape="circle">
+        <Badge color="danger" content={1}  shape="circle" size="md">
             <Dropdown>
               <DropdownTrigger>
-                <Button className="border-none" variant="ghost" size="sm">
+                <button className="hover:opacity-50">
                   <FavIcon />
-                </Button>
+                </button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem key="items">no items in fav</DropdownItem>
@@ -77,12 +81,12 @@ const TopBar = () => {
           </Badge>
         </NavbarItem>
         <NavbarItem>
-        <Badge color="danger" content={0} shape="circle">
+          <Badge color="danger" content={1}  shape="circle" size="md">
             <Dropdown>
               <DropdownTrigger>
-                <Button className="border-none" variant="ghost" size="sm">
+                <button className="hover:opacity-50">
                   <CartIcon />
-                </Button>
+                </button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem key="items">no items in cart</DropdownItem>
@@ -91,20 +95,20 @@ const TopBar = () => {
           </Badge>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="bg-lightgray">
+      <NavbarMenu className="">
         {categories.map((category, index) => (
           <NavbarMenuItem key={index}>
             <Dropdown>
               <DropdownTrigger>
                 <Button
-                  className="hover:text-blue-500"
+                  className="hover:text-danger uppercase dark:text-white"
                   variant="light"
                   data-hover="transparent"
                   data-focus="false"
                   data-focus-visible="false"
                   startContent={arrowDown}
                 >
-                  {category.toLocaleUpperCase()}
+                  {category}
                 </Button>
               </DropdownTrigger>
               <DropdownMenu aria-label="Static Actions">

@@ -15,6 +15,7 @@ const config: Config = {
         light: {
           colors: {
             lightgray: "#F7F7F7",
+            silver:"#EDEDED",
           }
         },
         dark: {
