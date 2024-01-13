@@ -6,7 +6,7 @@ import { Image } from "@nextui-org/react";
 
 const Collections = () => {
   return (
-    <div className="p-10">
+    <div className="p-5">
       <Breadcrumb />
       <h1 className="text-center text-2xl text-black font-bold my-10">
         All Collections

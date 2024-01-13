@@ -19,7 +19,7 @@ export default function ProductCard({
     <Card
       isFooterBlurred
       radius="lg"
-      className="border-none w-72"
+      className="border-none w-64"
       key={productDetails.id}
     >
       <Link href={"/collections/collection/products/" + productDetails.id} className="flex justify-center dark:bg-white">

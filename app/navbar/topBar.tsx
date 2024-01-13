@@ -15,12 +15,15 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Divider,
+  DropdownSection,
 } from "@nextui-org/react";
 import categories from "../data/categories";
 import CartIcon from "../icons/cartIcon";
 import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "./search";
+import Cart from "../common/cart";
 
 const arrowDown = (
   <svg
@@ -67,29 +70,65 @@ const TopBar = () => {
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem>
-        <Badge color="danger" content={1}  shape="circle" size="md">
+          <Badge color="danger" content={1} shape="circle" size="md">
             <Dropdown>
               <DropdownTrigger>
                 <button className="hover:opacity-50">
                   <FavIcon />
                 </button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="items">no items in fav</DropdownItem>
+              <DropdownMenu aria-label="Static Actions" closeOnSelect={false}>
+                <DropdownSection showDivider>
+                  <DropdownItem
+                    key="cart_product"
+                    className="max-h-52 overflow-auto"
+                  >
+                    <Cart />
+                  </DropdownItem>
+                  <DropdownItem
+                    key="cart_product"
+                    className="max-h-52 overflow-auto"
+                  >
+                    <Cart />
+                  </DropdownItem>
+                </DropdownSection>
+                <DropdownSection>
+                  <DropdownItem>
+                    <Button  className="w-full" variant="faded">View All</Button>
+                  </DropdownItem>
+                </DropdownSection>
               </DropdownMenu>
             </Dropdown>
           </Badge>
         </NavbarItem>
         <NavbarItem>
-          <Badge color="danger" content={1}  shape="circle" size="md">
+          <Badge color="danger" content={1} shape="circle" size="md">
             <Dropdown>
               <DropdownTrigger>
                 <button className="hover:opacity-50">
                   <CartIcon />
                 </button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem key="items">no items in cart</DropdownItem>
+              <DropdownMenu aria-label="Static Actions" closeOnSelect={false}>
+                <DropdownSection showDivider>
+                  <DropdownItem
+                    key="cart_product"
+                    className="max-h-52 overflow-auto"
+                  >
+                    <Cart />
+                  </DropdownItem>
+                  <DropdownItem
+                    key="cart_product"
+                    className="max-h-52 overflow-auto"
+                  >
+                    <Cart />
+                  </DropdownItem>
+                </DropdownSection>
+                <DropdownSection>
+                  <DropdownItem>
+                    <Button  className="w-full" variant="faded">View All</Button>
+                  </DropdownItem>
+                </DropdownSection>
               </DropdownMenu>
             </Dropdown>
           </Badge>
