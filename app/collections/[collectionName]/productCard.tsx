@@ -19,10 +19,10 @@ export default function ProductCard({
     <Card
       isFooterBlurred
       radius="lg"
-      className="border-none"
+      className="border-none w-72"
       key={productDetails.id}
     >
-      <Link href={"/collections/collection/products/" + productDetails.id}>
+      <Link href={"/collections/collection/products/" + productDetails.id} className="flex justify-center dark:bg-white">
         <Image
           alt="Woman listing to music"
           className="object-cover"

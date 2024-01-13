@@ -7,8 +7,8 @@ const Collection = ({ params }: { params: { collectionName: string } }) => {
   return (
     <div className="p-10">
       <Breadcrumb />
-      <div className="flex gap-10 m-10">
-        <div className="w-60 h-fit dark:bg-gray-200 rounded-lg">
+      <div className="flex gap-10 m-0 sm:m-10">
+        <div className="w-60 h-fit dark:bg-gray-200 rounded-lg hidden sm:flex">
           <Filters />
         </div>
         <div className="w-full">
