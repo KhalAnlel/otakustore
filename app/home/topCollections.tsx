@@ -13,8 +13,8 @@ export default function TopCollections() {
     <div className="flex flex-col mt-10 p-10 sm:p-20">
       <div className="flex items-center justify-between">
         <span className="text-black text-xl font-semibold">Collections</span>
-        <Button color="danger" endContent={<LiftArrow />}>
-          <Link href="/collections">View All</Link>
+        <Button color="danger" as={"a"}  href="/collections" endContent={<LiftArrow />}>
+          View All
         </Button>
       </div>
       <div className="flex gap-10 justify-center mt-10">

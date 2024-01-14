@@ -1,0 +1,23 @@
+const cities = [
+  "Baghdad",
+  "Mosul",
+  "Basra",
+  "Erbil",
+  "Sulaymaniyah",
+  "Kirkuk",
+  "Najaf",
+  "Karbala",
+  "Ramadi",
+  "Fallujah",
+  "Tikrit",
+  "Samarra",
+  "Diwaniya",
+  "Kut",
+  "Hilla",
+  "Amarah",
+  "Nasiriyah",
+  "Dohuk",
+  "Halabja",
+  "Zakho",
+];
+export default cities;

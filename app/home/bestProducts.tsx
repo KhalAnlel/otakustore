@@ -10,7 +10,7 @@ const BestProducts = () => {
         <span className="text-black text-xl font-semibold">
           Best Products This Month
         </span>
-        <Button color="danger" endContent={<LiftArrow />}>
+        <Button color="danger" href="/collections/collection" as="a" endContent={<LiftArrow />}>
           View All
         </Button>
       </div>

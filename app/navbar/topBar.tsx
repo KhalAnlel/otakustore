@@ -94,7 +94,7 @@ const TopBar = () => {
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
-                    <Button  className="w-full" variant="faded">View All</Button>
+                    <Button  className="w-full" variant="faded" href="/favourite" as="a">View All</Button>
                   </DropdownItem>
                 </DropdownSection>
               </DropdownMenu>
@@ -126,7 +126,7 @@ const TopBar = () => {
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
-                    <Button  className="w-full" variant="faded">View All</Button>
+                    <Button  className="w-full" variant="faded" href="/checkout" as="a">View All</Button>
                   </DropdownItem>
                 </DropdownSection>
               </DropdownMenu>

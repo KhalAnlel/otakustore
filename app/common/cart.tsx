@@ -1,4 +1,3 @@
-import { Button } from "@nextui-org/react";
 import React from "react";
 
 const Cart = () => {
@@ -11,8 +10,8 @@ const Cart = () => {
           alt="Product Image"
         />
         <div className="mx-3">
-          <h3 className="text-gray-900 font-semibold w-32">Product Name</h3>
-          <p className="text-gray-700 mt-1">$9.99</p>
+          <h3 className="text-gray-900 dark:text-white font-semibold w-32">Product Name</h3>
+          <p className="text-gray-700 dark:text-white mt-1">$9.99</p>
         </div>
         <button className="ml-auto py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
           Remove

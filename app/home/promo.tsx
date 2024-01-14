@@ -85,7 +85,7 @@ const Promo = () => {
                 href="#"
                 className="bg-danger hover:bg-gray-800 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium text-white"
               >
-                Shop Collection
+                Check Our Products
               </a>
             </div>
           </div>
