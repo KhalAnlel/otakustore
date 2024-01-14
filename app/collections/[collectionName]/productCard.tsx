@@ -22,9 +22,9 @@ export default function ProductCard({
       className="border-none w-64"
       key={productDetails.id}
     >
-      <Link href={"/collections/collection/products/" + productDetails.id} className="flex justify-center dark:bg-white">
+      <Link href={"/collections/collection/products/" + productDetails.id} className="flex justify-center dark:bg-white hover:scale-110 transition-all">
         <Image
-          alt="Woman listing to music"
+          alt={productDetails.imgUrl}
           className="object-cover"
           height={200}
           src={productDetails.imgUrl}
