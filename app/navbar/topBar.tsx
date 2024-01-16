@@ -5,7 +5,6 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Badge,
   NavbarMenuToggle,
   Button,
@@ -15,7 +14,6 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Divider,
   DropdownSection,
 } from "@nextui-org/react";
 import categories from "../data/categories";
@@ -24,6 +22,11 @@ import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "./search";
 import Cart from "../common/cart";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { clearFav } from "@/redux/features/favSlice";
+import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 const arrowDown = (
   <svg
@@ -41,8 +44,10 @@ const arrowDown = (
 );
 
 const TopBar = () => {
+  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openFav, setOpenFav] = useState(false);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const favItems = useSelector((state: RootState) => state.fav.items);
 
   return (
     <Navbar
@@ -70,7 +75,12 @@ const TopBar = () => {
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem>
-          <Badge color="danger" content={1} shape="circle" size="md">
+          <Badge
+            color="danger"
+            content={favItems.length}
+            shape="circle"
+            size="md"
+          >
             <Dropdown>
               <DropdownTrigger>
                 <button className="hover:opacity-50">
@@ -85,16 +95,17 @@ const TopBar = () => {
                   >
                     <Cart />
                   </DropdownItem>
-                  <DropdownItem
-                    key="cart_product"
-                    className="max-h-52 overflow-auto"
-                  >
-                    <Cart />
-                  </DropdownItem>
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
-                    <Button  className="w-full" variant="faded" href="/favourite" as="a">View All</Button>
+                    <Button variant="faded" className="w-full">
+                      <Link
+                        className="w-full text-center uppercase"
+                        href="/favourite"
+                      >
+                        View All
+                      </Link>
+                    </Button>
                   </DropdownItem>
                 </DropdownSection>
               </DropdownMenu>
@@ -102,7 +113,12 @@ const TopBar = () => {
           </Badge>
         </NavbarItem>
         <NavbarItem>
-          <Badge color="danger" content={1} shape="circle" size="md">
+          <Badge
+            color="danger"
+            content={cartItems.length}
+            shape="circle"
+            size="md"
+          >
             <Dropdown>
               <DropdownTrigger>
                 <button className="hover:opacity-50">
@@ -117,16 +133,17 @@ const TopBar = () => {
                   >
                     <Cart />
                   </DropdownItem>
-                  <DropdownItem
-                    key="cart_product"
-                    className="max-h-52 overflow-auto"
-                  >
-                    <Cart />
-                  </DropdownItem>
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
-                    <Button  className="w-full" variant="faded" href="/checkout" as="a">View All</Button>
+                    <Button variant="faded" className="w-full">
+                      <Link
+                        className="w-full text-center uppercase"
+                        href="/checkout"
+                      >
+                        View All
+                      </Link>
+                    </Button>
                   </DropdownItem>
                 </DropdownSection>
               </DropdownMenu>

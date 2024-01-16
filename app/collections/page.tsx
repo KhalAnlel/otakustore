@@ -13,17 +13,20 @@ const Collections = () => {
       </h1>
       <div className="flex items-center justify-center">
         <div className="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-2 max-w-6xl">
-          {collections.map((collection,index) => (
-            <div className="flex flex-col bg-gray-200 rounded-lg p-4 m-2" key={index}>
+          {collections.map((collection, index) => (
+            <div
+              className="flex flex-col bg-gray-200 rounded-lg p-4 m-2"
+              key={index}
+            >
               <div className=" bg-white rounded-2xl">
-                <Link href={"/collections/"+collection.title}>
-                <Image
-                  isZoomed
-                  width="100%"
-                  className="h-52 rounded-sm"
-                  src={collection.imgUrl}
+                <Link href={"/collections/" + collection.title}>
+                  <Image
+                    isZoomed
+                    width="100%"
+                    className="h-52 rounded-sm"
+                    src={collection.imgUrl}
                   />
-                  </Link>
+                </Link>
               </div>
               <div className="flex flex-col items-start mt-4">
                 <h4 className="w-full uppercase text-xl font-semibold text-black text-center hover:text-danger">

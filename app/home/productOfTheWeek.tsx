@@ -2,8 +2,18 @@ import React from "react";
 import Quantity from "../common/quantity";
 import SelectColor from "../common/selectColor";
 import SelectSize from "../common/selectSize";
+import prisma from "@/prisma/client";
 
-const ProductOfTheWeek = () => {
+const ProductOfTheWeek =async () => {
+  const bestProduct = await prisma.product.findFirst({
+    where:{
+      rate:4,
+    },
+    include: {
+      images: true,
+    },
+  })
+  console.log(bestProduct?.images[0].url)
   return (
     <div className="mt-20">
       <div className="bg-white py-8 mt-20 sm:mt-30">
@@ -13,7 +23,7 @@ const ProductOfTheWeek = () => {
               <div className="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
                 <img
                   className="w-full h-full object-cover"
-                  src="https://otakusshop.com/cdn/shop/files/img_304920_8e775af58a910d2ba260a0ea8dc8ceea_1_600x.jpg?v=1704383818"
+                  src={bestProduct?.images[0].url}
                   alt="Product Image"
                 />
               </div>
@@ -35,18 +45,18 @@ const ProductOfTheWeek = () => {
                 Product of the Week!
               </span>
               <h2 className="text-xl font-bold text-gray-800 mt-4 mb-2">
-                Product Name
+                {bestProduct?.title}
               </h2>
               <div className="flex mb-4">
                 <div className="mr-4">
                   <span className="font-bold text-gray-700 ">Price:</span>
-                  <span className="text-gray-600 ">$29.99</span>
+                  <span className="text-gray-600 "> ${bestProduct?.price}</span>
                 </div>
                 <div>
                   <span className="font-bold text-gray-700 ">
                     Availability:
                   </span>
-                  <span className="text-gray-600 ">In Stock</span>
+                  <span className="text-gray-600 "> {bestProduct?.stock} in stock</span>
                 </div>
               </div>
               <div className="mb-4">
@@ -63,14 +73,7 @@ const ProductOfTheWeek = () => {
                   Product Description:
                 </span>
                 <p className="text-gray-600  text-sm mt-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  sed ante justo. Integer euismod libero id mauris malesuada
-                  tincidunt. Vivamus commodo nulla ut lorem rhoncus aliquet.
-                  Duis dapibus augue vel ipsum pretium, et venenatis sem
-                  blandit. Quisque ut erat vitae nisi ultrices placerat non eget
-                  velit. Integer ornare mi sed ipsum lacinia, non sagittis
-                  mauris blandit. Morbi fermentum libero vel nisl suscipit, nec
-                  tincidunt mi consectetur.
+                 {bestProduct?.description}
                 </p>
               </div>
             </div>

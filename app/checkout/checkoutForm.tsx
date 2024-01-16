@@ -11,17 +11,38 @@ export default function CheckoutForm() {
       <div className="flex flex-col gap-4 w-full">
         <div className="flex gap-4">
           <Input
-          className=" dark:text-black"
+            className=" dark:text-black"
             type="text"
             variant="bordered"
             label="First Name"
             isClearable
             required
           />
-          <Input className=" dark:text-black" type="text" variant="bordered" label="Last Name" isClearable required/>
+          <Input
+            className=" dark:text-black"
+            type="text"
+            variant="bordered"
+            label="Last Name"
+            isClearable
+            required
+          />
         </div>
-        <Input className=" dark:text-black" type="email" variant="bordered" label="Email" isClearable required/>
-        <Input className=" dark:text-black" type="text" variant="bordered" label="Phone Number" isClearable required/>
+        <Input
+          className=" dark:text-black"
+          type="email"
+          variant="bordered"
+          label="Email"
+          isClearable
+          required
+        />
+        <Input
+          className=" dark:text-black"
+          type="text"
+          variant="bordered"
+          label="Phone Number"
+          isClearable
+          required
+        />
         <Select
           placeholder="Select a city"
           labelPlacement="outside"
@@ -38,8 +59,16 @@ export default function CheckoutForm() {
           ))}
         </Select>
         <div className="flex gap-4">
-          <Input className=" dark:text-black" type="text" variant="bordered" label="Address" isClearable required/>
-          <Input className=" dark:text-black"
+          <Input
+            className=" dark:text-black"
+            type="text"
+            variant="bordered"
+            label="Address"
+            isClearable
+            required
+          />
+          <Input
+            className=" dark:text-black"
             type="text"
             variant="bordered"
             label="Street, Block, House No."

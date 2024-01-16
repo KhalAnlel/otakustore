@@ -9,6 +9,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import DownArrow from "../icons/downArrow";
+import Link from "next/link";
 
 const BottomBar = () => {
   return (
@@ -17,6 +18,7 @@ const BottomBar = () => {
         <Dropdown key={index}>
           <DropdownTrigger>
             <Button
+              key={index}
               className="hover:text-danger"
               variant="light"
               data-hover="transparent"
@@ -24,7 +26,9 @@ const BottomBar = () => {
               data-focus-visible="false"
               startContent={<DownArrow />}
             >
-              {category.toLocaleUpperCase()}
+              <Link href={"/collections/" + category}>
+                {category.toLocaleUpperCase()}
+              </Link>
             </Button>
           </DropdownTrigger>
           <DropdownMenu aria-label="Static Actions">

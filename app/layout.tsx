@@ -3,7 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer/footer";
-
+import { ReduxProvider } from "@/redux/provider";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "E-Commerce App",
@@ -18,11 +19,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="bg-lightgray dark:bg-silver">
-        <Providers>
-          <Navbar/>
-          {children}
-        </Providers>
-        <Footer/>
+        <ReduxProvider>
+          <ToastContainer />
+          <Providers>
+            <Navbar />
+            {children}
+          </Providers>
+        </ReduxProvider>
+        <Footer />
       </body>
     </html>
   );
