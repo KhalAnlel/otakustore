@@ -12,7 +12,7 @@ const Favourite = async () => {
           <h1 className="text-2xl font-semibold mb-4 dark:text-black">
             Favourite Cart
           </h1>
-          <ItemsTable favItems={favItems} images={images} />
+          <ItemsTable products={favItems} images={images} />
         </div>
       </div>
     </div>

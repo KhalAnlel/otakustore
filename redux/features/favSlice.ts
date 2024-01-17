@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface FavItem {
+export interface FavItem {
   id: string;
 }
 
@@ -16,10 +16,10 @@ const favSlice = createSlice({
   name: "fav",
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<FavItem>) => {
+    addFavItem: (state, action: PayloadAction<FavItem>) => {
       state.items.push(action.payload);
     },
-    removeItem: (state, action: PayloadAction<string>) => {
+    removeFavItem: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
     clearFav: (state) => {
@@ -28,6 +28,6 @@ const favSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, clearFav } = favSlice.actions;
+export const { addFavItem, removeFavItem, clearFav } = favSlice.actions;
 
 export default favSlice.reducer;

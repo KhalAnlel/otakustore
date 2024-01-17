@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addItem } from "@/redux/features/favSlice";
+import { addFavItem } from "@/redux/features/favSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 interface Props {
@@ -12,7 +12,7 @@ const AddToFav = ({ productId }: Props) => {
   const dispatch = useDispatch();
   const handleAddToFav = () => {
     const item = { id: productId };
-    dispatch(addItem(item));
+    dispatch(addFavItem(item));
     toast.success("Item Added successfully.", {
       position: "top-right",
       autoClose: 3000,

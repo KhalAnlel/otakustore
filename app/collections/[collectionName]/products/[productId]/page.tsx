@@ -5,6 +5,7 @@ import MoreProducts from "@/app/common/moreProducts";
 import prisma from "@/prisma/client";
 import { Color, Size } from "@prisma/client";
 import ProductForm from "./productForm";
+import ProductImages from "./productImages";
 
 interface Props {
   params: { productId: string };
@@ -47,12 +48,8 @@ const Product = async ({ params }: Props) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
-            <div className="h-[460px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
-              <img
-                className="w-full h-full object-cover"
-                src={product.images[0].url}
-                alt="Product Image"
-              />
+            <div className="h-[460px] rounded-lg bg-transparent dark:bg-transparent mb-4">
+             <ProductImages images={product.images}/>
             </div>
           </div>
           <div className="md:flex-1 px-4 ">

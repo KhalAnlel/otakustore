@@ -4,19 +4,19 @@ import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { Product } from "@prisma/client";
 import { useDispatch } from "react-redux";
-import { removeItem } from "@/redux/features/favSlice";
+import { removeFavItem } from "@/redux/features/favSlice";
 import Link from "next/link";
 
 interface Props {
-  favItems: Product[];
+  products: Product[];
   images: { id: number; product_id: number; url: string }[];
 }
-const ItemsTable = ({ favItems, images }: Props) => {
+const ItemsTable = ({ products, images }: Props) => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.fav.items);
 
   const filteredItems = items.map((item) => {
-    const favItem = favItems.find(
+    const favItem = products.find(
       (favItem) => favItem.id === parseInt(item.id)
     );
     const productImage = images.find(
@@ -30,9 +30,8 @@ const ItemsTable = ({ favItems, images }: Props) => {
     };
   });
   const handleRemoveFromfav = (itemId: string) => {
-    dispatch(removeItem(itemId));
+    dispatch(removeFavItem(itemId));
   };
-
 
   return (
     <div>

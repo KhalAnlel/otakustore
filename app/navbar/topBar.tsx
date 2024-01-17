@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   Navbar,
   NavbarBrand,
@@ -21,33 +22,66 @@ import CartIcon from "../icons/cartIcon";
 import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "./search";
-import Cart from "../common/cart";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { clearFav } from "@/redux/features/favSlice";
+import { removeFavItem } from "@/redux/features/favSlice";
+import { removeCartItem } from "@/redux/features/cartSlice";
 import { useDispatch } from "react-redux";
-import Link from "next/link";
+import DownArrow from "../icons/downArrow";
+import { Product } from "@prisma/client";
 
-const arrowDown = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    className="w-4 h-4"
-  >
-    <path
-      fillRule="evenodd"
-      d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
+interface Props {
+  allProducts: Product[];
+  images: {
+    id: number;
+    product_id: number;
+    url: string;
+  }[];
+}
 
-const TopBar = () => {
+const TopBar = ({ allProducts, images }: Props) => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const favItems = useSelector((state: RootState) => state.fav.items);
+
+  const handleRemoveFromfav = (itemId: string) => {
+    dispatch(removeFavItem(itemId));
+  };
+
+  const handleRemoveFromcart = (itemId: string) => {
+    dispatch(removeCartItem(itemId));
+  };
+
+  const filteredFavItems = favItems.map((item) => {
+    const favItem = allProducts.find(
+      (favItem) => favItem.id === parseInt(item.id)
+    );
+    const productImage = images.find(
+      (image) => parseInt(item.id) === image.product_id
+    );
+    return {
+      id: item.id,
+      name: favItem?.title || "",
+      price: favItem?.price || 0,
+      productImage,
+    };
+  });
+
+  const filteredCartItems = cartItems.map((item) => {
+    const cartItem = allProducts.find(
+      (cartItem) => cartItem.id === parseInt(item.id)
+    );
+    const productImage = images.find(
+      (image) => parseInt(item.id) === image.product_id
+    );
+    return {
+      id: item.id,
+      name: cartItem?.title || "",
+      price: cartItem?.price || 0,
+      productImage,
+    };
+  });
 
   return (
     <Navbar
@@ -87,14 +121,53 @@ const TopBar = () => {
                   <FavIcon />
                 </button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions" closeOnSelect={false}>
+              <DropdownMenu
+                aria-label="Static Actions"
+                closeOnSelect={false}
+                disabledKeys={["fav"]}
+              >
                 <DropdownSection showDivider>
-                  <DropdownItem
-                    key="cart_product"
-                    className="max-h-52 overflow-auto"
-                  >
-                    <Cart />
-                  </DropdownItem>
+                  {favItems.length !== 0 ? (
+                    filteredFavItems.map((product, index) => (
+                      <DropdownItem
+                        key="cart_product"
+                        className="max-h-52 overflow-auto"
+                      >
+                        <div className="flex flex-col divide-y divide-gray-200">
+                          <div
+                            className="flex items-center py-4 px-6"
+                            key={index}
+                          >
+                            <img
+                              className="w-16 h-16 object-cover rounded"
+                              src={product.productImage?.url}
+                              alt="Product Image"
+                            />
+                            <div className="mx-3">
+                              <h3 className="text-gray-900 dark:text-white font-semibold w-32">
+                                {product.name}
+                              </h3>
+                              <p className="text-gray-700 dark:text-white mt-1">
+                                ${product.price}
+                              </p>
+                            </div>
+                            <button
+                              className="ml-auto py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
+                              onClick={() =>
+                                handleRemoveFromfav(product.id.toString())
+                              }
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      </DropdownItem>
+                    ))
+                  ) : (
+                    <DropdownItem key={"fav"} className="text-center">
+                      No Items
+                    </DropdownItem>
+                  )}
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
@@ -125,14 +198,53 @@ const TopBar = () => {
                   <CartIcon />
                 </button>
               </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions" closeOnSelect={false}>
+              <DropdownMenu
+                aria-label="Static Actions"
+                closeOnSelect={false}
+                disabledKeys={["cart"]}
+              >
                 <DropdownSection showDivider>
-                  <DropdownItem
-                    key="cart_product"
-                    className="max-h-52 overflow-auto"
-                  >
-                    <Cart />
-                  </DropdownItem>
+                  {cartItems.length !== 0 ? (
+                    filteredCartItems.map((product, index) => (
+                      <DropdownItem
+                        key="cart_product"
+                        className="max-h-52 overflow-auto"
+                      >
+                        <div className="flex flex-col divide-y divide-gray-200">
+                          <div
+                            className="flex items-center py-4 px-6"
+                            key={index}
+                          >
+                            <img
+                              className="w-16 h-16 object-cover rounded"
+                              src={product.productImage?.url}
+                              alt="Product Image"
+                            />
+                            <div className="mx-3">
+                              <h3 className="text-gray-900 dark:text-white font-semibold w-32">
+                                {product.name}
+                              </h3>
+                              <p className="text-gray-700 dark:text-white mt-1">
+                                ${product.price}
+                              </p>
+                            </div>
+                            <button
+                              className="ml-auto py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
+                              onClick={() =>
+                                handleRemoveFromcart(product.id.toString())
+                              }
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      </DropdownItem>
+                    ))
+                  ) : (
+                    <DropdownItem key={"cart"} className="text-center">
+                      No Items
+                    </DropdownItem>
+                  )}
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
@@ -162,7 +274,7 @@ const TopBar = () => {
                   data-hover="transparent"
                   data-focus="false"
                   data-focus-visible="false"
-                  startContent={arrowDown}
+                  startContent={<DownArrow />}
                 >
                   {category}
                 </Button>

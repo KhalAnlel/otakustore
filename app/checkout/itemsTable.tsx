@@ -4,7 +4,7 @@ import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { Product } from "@prisma/client";
 import { useDispatch } from "react-redux";
-import {  removeItem } from "@/redux/features/cartSlice";
+import {  removeCartItem } from "@/redux/features/cartSlice";
 import Link from "next/link";
 import CheckoutForm from "./checkoutForm";
 
@@ -41,7 +41,7 @@ const ItemsTable = ({ cartItems, images }: Props) => {
   });
 
   const handleRemoveFromCart = (itemId: string) => {
-    dispatch(removeItem(itemId));
+    dispatch(removeCartItem(itemId));
   };
 
   return (

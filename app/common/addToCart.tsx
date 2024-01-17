@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addItem } from "@/redux/features/cartSlice";
+import { addCartItem } from "@/redux/features/cartSlice";
 
 interface Props {
   productId: string;
@@ -31,7 +31,7 @@ const AddToCart = ({
       selectedSize,
       selectedQuantity,
     };
-    dispatch(addItem(item));
+    dispatch(addCartItem(item));
 
     toast.success("Item Added successfully.", {
       position: "top-right",

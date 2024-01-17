@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-  stock?: number;
+  stock: number;
   selectedQuantity: number;
   onQuantityChange: (newQuantity: number) => void;
 }
@@ -12,7 +12,7 @@ const Quantity = ({ stock, selectedQuantity, onQuantityChange }: Props) => {
   };
 
   const handleIncrement = () => {
-    onQuantityChange(Math.min(selectedQuantity + 1, stock||1));
+    onQuantityChange(Math.min(selectedQuantity + 1, stock));
   };
   return (
     <div className="flex items-center gap-4 ">
@@ -21,7 +21,7 @@ const Quantity = ({ stock, selectedQuantity, onQuantityChange }: Props) => {
         <button
           type="button"
           id="decrement-button"
-          className="h-8 w-10  text-gray-600 transition hover:opacity-75"
+          className="h-8 w-10  text-black transition hover:opacity-75"
           onClick={handleDecrement}
           data-input-counter-decrement="quantity-input"
         >
@@ -37,13 +37,13 @@ const Quantity = ({ stock, selectedQuantity, onQuantityChange }: Props) => {
           placeholder="1"
           value={selectedQuantity}
           required
-          className="h-8 w-16 dark:bg-gray-600 border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+          className="h-8 w-16 dark:bg-slate-300 text-black border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
         />
 
         <button
           type="button"
           id="increment-button"
-          className="h-8 w-10  text-gray-600 transition hover:opacity-75"
+          className="h-8 w-10  text-black transition hover:opacity-75"
           onClick={handleIncrement}
           data-input-counter-increment="quantity-input"
         >
