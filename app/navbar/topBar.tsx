@@ -122,22 +122,17 @@ const TopBar = ({ allProducts, images }: Props) => {
                 </button>
               </DropdownTrigger>
               <DropdownMenu
-                aria-label="Static Actions"
+                aria-label="opening fav menu"
                 closeOnSelect={false}
                 disabledKeys={["fav"]}
+                className="max-h-72 overflow-auto"
               >
                 <DropdownSection showDivider>
                   {favItems.length !== 0 ? (
                     filteredFavItems.map((product, index) => (
-                      <DropdownItem
-                        key="cart_product"
-                        className="max-h-52 overflow-auto"
-                      >
+                      <DropdownItem key={index}>
                         <div className="flex flex-col divide-y divide-gray-200">
-                          <div
-                            className="flex items-center py-4 px-6"
-                            key={index}
-                          >
+                          <div className="flex items-center py-4 px-6">
                             <img
                               className="w-16 h-16 object-cover rounded"
                               src={product.productImage?.url}
@@ -164,8 +159,8 @@ const TopBar = ({ allProducts, images }: Props) => {
                       </DropdownItem>
                     ))
                   ) : (
-                    <DropdownItem key={"fav"} className="text-center">
-                      No Items
+                    <DropdownItem key={"fav"}>
+                      <p className="text-center">No Items</p>{" "}
                     </DropdownItem>
                   )}
                 </DropdownSection>
@@ -199,22 +194,17 @@ const TopBar = ({ allProducts, images }: Props) => {
                 </button>
               </DropdownTrigger>
               <DropdownMenu
-                aria-label="Static Actions"
+                aria-label="opening cart menu"
                 closeOnSelect={false}
                 disabledKeys={["cart"]}
+                className="max-h-72 overflow-auto"
               >
                 <DropdownSection showDivider>
                   {cartItems.length !== 0 ? (
                     filteredCartItems.map((product, index) => (
-                      <DropdownItem
-                        key="cart_product"
-                        className="max-h-52 overflow-auto"
-                      >
+                      <DropdownItem key={index}>
                         <div className="flex flex-col divide-y divide-gray-200">
-                          <div
-                            className="flex items-center py-4 px-6"
-                            key={index}
-                          >
+                          <div className="flex items-center py-4 px-6">
                             <img
                               className="w-16 h-16 object-cover rounded"
                               src={product.productImage?.url}
@@ -241,8 +231,8 @@ const TopBar = ({ allProducts, images }: Props) => {
                       </DropdownItem>
                     ))
                   ) : (
-                    <DropdownItem key={"cart"} className="text-center">
-                      No Items
+                    <DropdownItem key={"cart"}>
+                      <p className="text-center"> No Items</p>
                     </DropdownItem>
                   )}
                 </DropdownSection>
