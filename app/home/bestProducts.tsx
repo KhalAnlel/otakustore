@@ -1,7 +1,6 @@
 import { Button, Link } from "@nextui-org/react";
 import React from "react";
 import LiftArrow from "../icons/liftArrow";
-import list from "../data/productsList";
 import prisma from "@/prisma/client";
 
 const BestProducts = async () => {

@@ -24,8 +24,7 @@ import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "./search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { removeFavItem } from "@/redux/features/favSlice";
-import { removeCartItem } from "@/redux/features/cartSlice";
+import { clearFav } from "@/redux/features/favSlice";
 import { useDispatch } from "react-redux";
 import DownArrow from "../icons/downArrow";
 import { Product } from "@prisma/client";
@@ -45,43 +44,14 @@ const TopBar = ({ allProducts, images }: Props) => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const favItems = useSelector((state: RootState) => state.fav.items);
 
-  const handleRemoveFromfav = (itemId: string) => {
-    dispatch(removeFavItem(itemId));
-  };
-
-  const handleRemoveFromcart = (itemId: string) => {
-    dispatch(removeCartItem(itemId));
-  };
-
-  const filteredFavItems = favItems.map((item) => {
-    const favItem = allProducts.find(
-      (favItem) => favItem.id === parseInt(item.id)
-    );
-    const productImage = images.find(
-      (image) => parseInt(item.id) === image.product_id
-    );
-    return {
-      id: item.id,
-      name: favItem?.title || "",
-      price: favItem?.price || 0,
-      productImage,
-    };
+  let totalPrice = 0;
+  cartItems.map((item) => {
+    totalPrice += item.price;
   });
 
-  const filteredCartItems = cartItems.map((item) => {
-    const cartItem = allProducts.find(
-      (cartItem) => cartItem.id === parseInt(item.id)
-    );
-    const productImage = images.find(
-      (image) => parseInt(item.id) === image.product_id
-    );
-    return {
-      id: item.id,
-      name: cartItem?.title || "",
-      price: cartItem?.price || 0,
-      productImage,
-    };
-  });
+  const handleClearfav = () => {
+    dispatch(clearFav());
+  };
 
   return (
     <Navbar
@@ -94,11 +64,9 @@ const TopBar = ({ allProducts, images }: Props) => {
           className="md:hidden text-black dark:text-white"
         />
         <NavbarBrand>
-          <p>
             <Link href="/" className="font-bold text-black dark:text-white">
               LOGO
             </Link>
-          </p>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent as="div" className="hidden sm:flex gap-4" justify="center">
@@ -124,45 +92,15 @@ const TopBar = ({ allProducts, images }: Props) => {
               <DropdownMenu
                 aria-label="opening fav menu"
                 closeOnSelect={false}
-                disabledKeys={["fav"]}
+                disabledKeys={["count"]}
                 className="max-h-72 overflow-auto"
               >
                 <DropdownSection showDivider>
-                  {favItems.length !== 0 ? (
-                    filteredFavItems.map((product, index) => (
-                      <DropdownItem key={index}>
-                        <div className="flex flex-col divide-y divide-gray-200">
-                          <div className="flex items-center py-4 px-6">
-                            <img
-                              className="w-16 h-16 object-cover rounded"
-                              src={product.productImage?.url}
-                              alt="Product Image"
-                            />
-                            <div className="mx-3">
-                              <h3 className="text-gray-900 dark:text-white font-semibold w-32">
-                                {product.name}
-                              </h3>
-                              <p className="text-gray-700 dark:text-white mt-1">
-                                ${product.price}
-                              </p>
-                            </div>
-                            <button
-                              className="ml-auto py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
-                              onClick={() =>
-                                handleRemoveFromfav(product.id.toString())
-                              }
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        </div>
-                      </DropdownItem>
-                    ))
-                  ) : (
-                    <DropdownItem key={"fav"}>
-                      <p className="text-center">No Items</p>{" "}
-                    </DropdownItem>
-                  )}
+                  <DropdownItem key="count">
+                    <span className="font-bold text-danger text-lg">
+                      {favItems.length} Items
+                    </span>
+                  </DropdownItem>
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>
@@ -196,45 +134,20 @@ const TopBar = ({ allProducts, images }: Props) => {
               <DropdownMenu
                 aria-label="opening cart menu"
                 closeOnSelect={false}
-                disabledKeys={["cart"]}
+                disabledKeys={["count","price"]}
                 className="max-h-72 overflow-auto"
               >
                 <DropdownSection showDivider>
-                  {cartItems.length !== 0 ? (
-                    filteredCartItems.map((product, index) => (
-                      <DropdownItem key={index}>
-                        <div className="flex flex-col divide-y divide-gray-200">
-                          <div className="flex items-center py-4 px-6">
-                            <img
-                              className="w-16 h-16 object-cover rounded"
-                              src={product.productImage?.url}
-                              alt="Product Image"
-                            />
-                            <div className="mx-3">
-                              <h3 className="text-gray-900 dark:text-white font-semibold w-32">
-                                {product.name}
-                              </h3>
-                              <p className="text-gray-700 dark:text-white mt-1">
-                                ${product.price}
-                              </p>
-                            </div>
-                            <button
-                              className="ml-auto py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
-                              onClick={() =>
-                                handleRemoveFromcart(product.id.toString())
-                              }
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        </div>
-                      </DropdownItem>
-                    ))
-                  ) : (
-                    <DropdownItem key={"cart"}>
-                      <p className="text-center"> No Items</p>
-                    </DropdownItem>
-                  )}
+                  <DropdownItem key="count">
+                    <span className="font-bold text-danger text-lg">
+                      {cartItems.length} Items
+                    </span>
+                  </DropdownItem>
+                  <DropdownItem key="price">
+                    <span className="font-bold text-white text-sm">
+                      Total Price: ${totalPrice}
+                    </span>
+                  </DropdownItem>
                 </DropdownSection>
                 <DropdownSection>
                   <DropdownItem>

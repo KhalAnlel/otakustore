@@ -64,8 +64,8 @@ const ItemsTable = ({ products, images }: Props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredItems.map((item) => (
-                    <tr>
+                  {filteredItems.map((item,index) => (
+                    <tr key={index}>
                       <td className="py-4">
                         <div className="flex items-center">
                           <img

@@ -37,6 +37,7 @@ const Quantity = ({ stock, selectedQuantity, onQuantityChange }: Props) => {
           placeholder="1"
           value={selectedQuantity}
           required
+          readOnly
           className="h-8 w-16 dark:bg-slate-300 text-black border-transparent text-center [-moz-appearance:_textfield] sm:text-sm [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
         />
 
