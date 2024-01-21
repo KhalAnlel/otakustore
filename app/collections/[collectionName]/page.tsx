@@ -14,6 +14,7 @@ interface Props {
     sort: string;
     items: string;
     page: string;
+    view:string;
   };
 }
 
@@ -61,9 +62,9 @@ const Collection = async ({ searchParams }: Props) => {
               <PerPage />
               <View />
             </div>
-            <div className="flex gap-4 mt-4 flex-wrap justify-center">
+            <div className={`flex mt-4 flex-wrap justify-center ${(searchParams.view==="grid")? "gap-4":"gap-0"}`}>
               {products.map((product, index) => (
-                <ProductCard productCard={product} key={index} />
+                <ProductCard productCard={product} key={index} view={searchParams.view}/>
               ))}
             </div>
           </div>

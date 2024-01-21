@@ -13,10 +13,11 @@ interface Props {
     ProductSize: { product_id: number; size_id: number }[];
     images: { id: number; product_id: number; url: string }[];
   };
+  view: string;
 }
 
-export default function ProductCard({ productCard }: Props) {
-  return (
+export default function ProductCard({ productCard, view }: Props) {
+  return view === "grid" ? (
     <Card
       isFooterBlurred
       radius="lg"
@@ -29,7 +30,7 @@ export default function ProductCard({ productCard }: Props) {
       >
         <Image
           alt={productCard.images[0].url}
-          className="object-cover"
+          className="object-contain max-h-44"
           height={200}
           src={productCard.images[0].url}
           width={200}
@@ -54,5 +55,34 @@ export default function ProductCard({ productCard }: Props) {
         </Button>
       </CardFooter>
     </Card>
+  ) : (
+    <div key={productCard.id} className="flex w-full items-center border-1 p-10">
+      <div>
+        <Link
+          href={"/collections/collection/products/" + productCard.id}
+          className="flex justify-center dark:bg-white hover:scale-110 transition-all"
+        >
+          <img
+            src={productCard.images[0].url}
+            className="w-44 h-40 object-contain rounded-lg p-2"
+          />
+        </Link>
+      </div>
+      <div className="flex flex-col  ml-3 gap-5">
+        <p className="text-xl font-bold  text-black">{productCard.title}</p>
+        <p className="text-lg font-semibold  text-black">{productCard.description}</p>
+      </div>
+      <div className="ml-auto flex flex-col gap-5">
+        <p className="text-xl font-semibold text-center text-black">Price: <span className="text-danger">${productCard.price}</span></p>
+        <Button variant="solid" color="danger">
+        <Link
+          href={"/collections/collection/products/" + productCard.id}
+          className="bg-transparent"
+        >
+          View Product
+          </Link>
+        </Button>
+      </div>
+    </div>
   );
 }

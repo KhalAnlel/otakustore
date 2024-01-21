@@ -8,7 +8,7 @@ const BestProducts = async () => {
     orderBy: {
       rate: "asc",
     },
-    take: 4,
+    take: 6,
     include: {
       images: true,
     },
@@ -29,7 +29,7 @@ const BestProducts = async () => {
             className="w-full h-44 flex bg-white border-1 items-center p-5 gap-4"
             key={index}
           >
-            <img src={product.images[index].url} className="w-24 h-24" />
+            <img src={product.images[0].url} className="w-44 h-32 object-contain" />
             <div className="flex flex-col gap-4">
               <span className="text-gray-500">Type of Product</span>
               <Link
