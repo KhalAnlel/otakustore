@@ -70,7 +70,7 @@ const ItemsTable = ({ products, images }: Props) => {
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 mr-4"
-                            src="https://via.placeholder.com/150"
+                            src={item.productImage?.url}
                             alt="Product image"
                           />
                           <Link href={"/collections/all/products/" + item.id}>

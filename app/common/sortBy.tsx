@@ -1,5 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   Dropdown,
   DropdownTrigger,
@@ -9,14 +11,18 @@ import {
 } from "@nextui-org/react";
 
 export default function SortBy() {
-  const [selectedKeys, setSelectedKeys] = React.useState(
-    new Set(["featured"])
-  );
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const changeItems = (orderBy: string, sort: string,label:string) => {
+    const params = new URLSearchParams(searchParams);
+    setValue(label)
+    params.set("orderBy", orderBy.toString());
+    params.set("sort", sort.toString());
+    params.set("page", "1");
+    router.push("?" + params.toString());
+  };
 
-  const selectedValue = React.useMemo(
-    () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-    [selectedKeys]
-  );
+  const [value,setValue] = useState("Alphabetacally, A-Z");
 
   return (
     <Dropdown backdrop="blur">
@@ -25,7 +31,7 @@ export default function SortBy() {
           variant="faded"
           className="capitalize border-0 dark:bg-transparent text-black hover:text-danger"
         >
-          Sort By: <span className="font-bold">{selectedValue}</span>
+          Sort By: <span className="font-bold">{value}</span>
         </Button>
       </DropdownTrigger>
       <DropdownMenu
@@ -33,17 +39,13 @@ export default function SortBy() {
         variant="flat"
         disallowEmptySelection
         selectionMode="single"
-        selectedKeys={selectedKeys}
-        // onSelectionChange={setSelectedKeys}
       >
-        <DropdownItem key="featured">Featured</DropdownItem>
-        <DropdownItem key="best_selling">Best Selling</DropdownItem>
-        <DropdownItem key="alphabetacally_a_z">Alphabetacally, A-Z</DropdownItem>
-        <DropdownItem key="alphabetacally_z_a">Alphabetacally, Z-A</DropdownItem>
-        <DropdownItem key="price_low_high">Price, Low to High</DropdownItem>
-        <DropdownItem key="price_high-low">Price, High to Low</DropdownItem>
-        <DropdownItem key="date_new_old">Date, New to Old</DropdownItem>
-        <DropdownItem key="date_old_new">Date, Old to New</DropdownItem>
+        <DropdownItem key="alphabetacally_a_z" onClick={() => changeItems("title","asc","Alphabetacally, A-Z")}>Alphabetacally, A-Z</DropdownItem>
+        <DropdownItem key="alphabetacally_z_a" onClick={() => changeItems("title", "desc","Alphabetacally, Z-A")}>Alphabetacally, Z-A</DropdownItem>
+        <DropdownItem key="price_high-low" onClick={() => changeItems("price", "desc","Price, High to Low")}>Price, High to Low</DropdownItem>
+        <DropdownItem key="price_low_high" onClick={() => changeItems("price","asc","Price, Low to High")}>Price, Low to High</DropdownItem>
+        <DropdownItem key="date_new_old" onClick={() => changeItems("addedAt","desc","Date, New to Old")}>Date, New to Old</DropdownItem>
+        <DropdownItem key="date_old_new" onClick={() => changeItems("addedAt","asc","Date, Old to New")}>Date, Old to New</DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

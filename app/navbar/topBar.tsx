@@ -21,24 +21,14 @@ import categories from "../data/categories";
 import CartIcon from "../icons/cartIcon";
 import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../common/themeSwitcher";
-import Search from "./search";
+import Search from "../common/search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { clearFav } from "@/redux/features/favSlice";
 import { useDispatch } from "react-redux";
 import DownArrow from "../icons/downArrow";
-import { Product } from "@prisma/client";
 
-interface Props {
-  allProducts: Product[];
-  images: {
-    id: number;
-    product_id: number;
-    url: string;
-  }[];
-}
 
-const TopBar = ({ allProducts, images }: Props) => {
+const TopBar = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -48,10 +38,6 @@ const TopBar = ({ allProducts, images }: Props) => {
   cartItems.map((item) => {
     totalPrice += item.price;
   });
-
-  const handleClearfav = () => {
-    dispatch(clearFav());
-  };
 
   return (
     <Navbar

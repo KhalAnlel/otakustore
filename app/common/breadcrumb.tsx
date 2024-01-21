@@ -6,7 +6,7 @@ interface Props {
 
 const Breadcrumb = ({ title }: Props) => {
   return (
-    <div className="px-10">
+    <div>
       <nav className="flex mt-1">
         <ol className="flex flex-wrap text-sm">
           <li className="inline-flex items-center">
