@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/react";
 import Link from "next/link";
 
 const BottomBar = () => {
-  const displayedCategories = categories.slice(0, 7);
+  const displayedCategories = categories.slice(7, 14);
   return (
     <div className="hidden gap-8 justify-center bg-silver dark:bg-midnightblue md:flex">
       {displayedCategories.map((category, index) => (
@@ -17,7 +17,7 @@ const BottomBar = () => {
           data-focus="false"
           data-focus-visible="false"
         >
-          <Link href={"/products?query=" + category.title}>
+          <Link href={"/products?query=" + category.title.toLocaleLowerCase()}>
             {category.title.toLocaleUpperCase()}
           </Link>
         </Button>

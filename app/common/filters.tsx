@@ -23,10 +23,10 @@ export default function Filters() {
         {categories.map((category, index) => (
           <div key={index} className="ml-3">
             <Link
-              href={"/products?query=" + category.title}
+              href={"/products?query=" + category.title.toLocaleLowerCase()}
               className="uppercase text-black text-sm hover:text-danger"
             >
-              {category.title}
+              {category.title.toLocaleLowerCase()}
             </Link>
           </div>
         ))}
@@ -40,10 +40,10 @@ export default function Filters() {
         {animeList.map((anime, index) => (
           <div key={index} className="ml-3">
             <Link
-              href={"/products?query=" + anime}
+              href={"/products?query=" + anime.toLocaleLowerCase()}
               className="uppercase  text-black text-sm hover:text-danger"
             >
-              {anime}
+              {anime.toLocaleLowerCase()}
             </Link>
           </div>
         ))}

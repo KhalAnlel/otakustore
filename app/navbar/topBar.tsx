@@ -160,7 +160,7 @@ const TopBar = () => {
               data-focus="false"
               data-focus-visible="false"
             >
-              <Link href={"/products?query=" + category.title}>
+              <Link href={"/products?query=" + category.title.toLocaleLowerCase()}>
                 {category.title.toLocaleUpperCase()}
               </Link>
             </Button>

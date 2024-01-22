@@ -18,7 +18,7 @@ interface Props {
 const MoreProducts = ({ products }: Props) => {
   return (
     <>
-      <p className="text-2xl font-bold mb-10">You may also like</p>
+      <p className="text-2xl font-bold mb-10 text-black">You may also like</p>
       <Swiper
         loop={true}
         spaceBetween={10}
@@ -50,7 +50,7 @@ const MoreProducts = ({ products }: Props) => {
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
-            <Card isFooterBlurred radius="lg" className="border-none w-52">
+            <Card isFooterBlurred radius="lg" className="border-none w-52 bg-transparent">
               <Link href={"/products/" + product.id} className="m-auto">
                 <Image
                   alt={product.images[0].url}

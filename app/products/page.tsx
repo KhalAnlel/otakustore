@@ -6,6 +6,7 @@ import PerPage from "@/app/common/perPage";
 import SortBy from "@/app/common/sortBy";
 import View from "@/app/common/view";
 import ProductCard from "./productCard";
+import { notFound } from "next/navigation";
 
 interface Props {
   searchParams: {
@@ -18,7 +19,7 @@ interface Props {
   };
 }
 
-const Collection = async ({ searchParams }: Props) => {
+const Products = async ({ searchParams }: Props) => {
   if (!searchParams.query) searchParams.query = "";
 
   const orderBy = searchParams.orderBy
@@ -62,21 +63,26 @@ const Collection = async ({ searchParams }: Props) => {
               <PerPage />
               <View />
             </div>
-            <div
-              className={`flex mt-4 flex-wrap justify-center ${
-                !searchParams.view || searchParams.view === "grid"
-                  ? "gap-4"
-                  : "gap-0"
-              }`}
-            >
-              {products.map((product, index) => (
-                <ProductCard
-                  productCard={product}
-                  key={index}
-                  view={searchParams.view}
-                />
-              ))}
-            </div>
+            {(products.length===0)?(
+              <div className="h-60 flex items-center justify-center"><p className="text-black text-xl font-semibold">Products Not Found</p></div>
+            ):(
+
+              <div
+                className={`flex mt-4 flex-wrap justify-center ${
+                  !searchParams.view || searchParams.view === "grid"
+                    ? "gap-4"
+                    : "gap-0"
+                }`}
+              >
+                {products.map((product, index) => (
+                  <ProductCard
+                    productCard={product}
+                    key={index}
+                    view={searchParams.view}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -84,4 +90,4 @@ const Collection = async ({ searchParams }: Props) => {
   );
 };
 
-export default Collection;
+export default Products;

@@ -58,7 +58,7 @@ const Breadcrumb = ({ title }: Props) => {
                   href="/products"
                   className="flex font-medium text-gray-700 hover:text-gray-900"
                 >
-                  {title}
+                  {title.toLocaleUpperCase()}
                 </a>
               </div>
             </li>
