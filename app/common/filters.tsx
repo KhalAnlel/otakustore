@@ -10,24 +10,23 @@ export default function Filters() {
     <Accordion className="dark:text-black" defaultExpandedKeys={["1"]}>
       <AccordionItem
         key="1"
-        aria-label="Collections"
+        aria-label="Categories"
         className="gap-2"
-        title={<h1 className="text-black">Collections</h1>}
+        title={<h1 className="text-black">Categories</h1>}
       >
-            <Link
-              href={"/products"}
-              className="uppercase ml-3 text-black text-sm hover:text-danger"
-            >
-              All
-            </Link>
+        <Link
+          href={"/products"}
+          className="uppercase ml-3 text-black text-sm hover:text-danger"
+        >
+          All
+        </Link>
         {categories.map((category, index) => (
-          <div key={index}>
-
+          <div key={index} className="ml-3">
             <Link
-              href={"/products?query=" + category}
-              className="uppercase ml-3 text-black text-sm hover:text-danger"
+              href={"/products?query=" + category.title}
+              className="uppercase text-black text-sm hover:text-danger"
             >
-              {category}
+              {category.title}
             </Link>
           </div>
         ))}
@@ -39,10 +38,10 @@ export default function Filters() {
         title={<h1 className="text-black">Animes</h1>}
       >
         {animeList.map((anime, index) => (
-          <div key={index}>
+          <div key={index} className="ml-3">
             <Link
               href={"/products?query=" + anime}
-              className="uppercase  ml-3 text-black text-sm hover:text-danger"
+              className="uppercase  text-black text-sm hover:text-danger"
             >
               {anime}
             </Link>

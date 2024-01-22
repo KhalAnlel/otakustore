@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function ProductCard({ productCard, view }: Props) {
-  return (!view || view === "grid") ? (
+  return !view || view === "grid" ? (
     <Card
       isFooterBlurred
       radius="lg"
@@ -56,12 +56,12 @@ export default function ProductCard({ productCard, view }: Props) {
       </CardFooter>
     </Card>
   ) : (
-    <div key={productCard.id} className="flex w-full items-center border-1 p-10">
+    <div
+      key={productCard.id}
+      className="flex w-full items-center border-1 p-10"
+    >
       <div>
-        <Link
-          href={"/products/" + productCard.id}
-          className=""
-        >
+        <Link href={"/products/" + productCard.id} className="">
           <img
             src={productCard.images[0].url}
             className="w-28 h-48 object-cover rounded-lg p-2 hover:scale-110 transition-all"
@@ -70,16 +70,17 @@ export default function ProductCard({ productCard, view }: Props) {
       </div>
       <div className="flex flex-col  ml-3 gap-5">
         <p className="text-xl font-bold  text-black">{productCard.title}</p>
-        <p className="text-lg font-semibold  text-black">{productCard.description}</p>
+        <p className="text-lg font-semibold  text-black">
+          {productCard.description}
+        </p>
       </div>
       <div className="ml-auto flex flex-col gap-5">
-        <p className="text-xl font-semibold text-center text-black">Price: <span className="text-danger">${productCard.price}</span></p>
+        <p className="text-xl font-semibold text-center text-black">
+          Price: <span className="text-danger">${productCard.price}</span>
+        </p>
         <Button variant="solid" color="danger">
-        <Link
-          href={"/products/" + productCard.id}
-          className="bg-transparent"
-        >
-          View Product
+          <Link href={"/products/" + productCard.id} className="bg-transparent">
+            View Product
           </Link>
         </Button>
       </div>

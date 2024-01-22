@@ -1,20 +1,14 @@
 "use client";
 import React from "react";
 import categories from "../data/categories";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from "@nextui-org/react";
-import DownArrow from "../icons/downArrow";
+import { Button } from "@nextui-org/react";
 import Link from "next/link";
 
 const BottomBar = () => {
+  const displayedCategories = categories.slice(0, 7);
   return (
     <div className="hidden gap-8 justify-center bg-silver dark:bg-midnightblue md:flex">
-      {categories.map((category, index) => (
+      {displayedCategories.map((category, index) => (
         <Button
           key={index}
           className="hover:text-danger"
@@ -23,8 +17,8 @@ const BottomBar = () => {
           data-focus="false"
           data-focus-visible="false"
         >
-          <Link href={"/products?query=" + category}>
-            {category.toLocaleUpperCase()}
+          <Link href={"/products?query=" + category.title}>
+            {category.title.toLocaleUpperCase()}
           </Link>
         </Button>
       ))}

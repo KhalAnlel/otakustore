@@ -25,11 +25,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[0].images[0].url} className="w-52 h-52 object-contain" />
+            <img
+              src={bestProduct[0].images[0].url}
+              className="w-52 h-52 object-contain"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[0].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[0].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[0].id}
+                href={"/products/" + bestProduct[0].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[0].title}
@@ -44,11 +49,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[1].images[0].url} className="w-24 h-24 object-contain mb-4" />
+            <img
+              src={bestProduct[1].images[0].url}
+              className="w-24 h-24 object-contain mb-4"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[1].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[1].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[1].id}
+                href={"/products/" + bestProduct[1].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[1].title}
@@ -63,11 +73,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[2].images[0].url} className="w-24 h-24 object-contain mb-4" />
+            <img
+              src={bestProduct[2].images[0].url}
+              className="w-24 h-24 object-contain mb-4"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[2].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[2].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[2].id}
+                href={"/products/" + bestProduct[2].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[2].title}
@@ -82,11 +97,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[3].images[0].url} className="w-52 h-52 object-contain" />
+            <img
+              src={bestProduct[3].images[0].url}
+              className="w-52 h-52 object-contain"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[3].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[3].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[3].id}
+                href={"/products/" + bestProduct[3].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[3].title}
@@ -101,11 +121,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[4].images[0].url} className="w-24 h-24 object-contain mb-4" />
+            <img
+              src={bestProduct[4].images[0].url}
+              className="w-24 h-24 object-contain mb-4"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[4].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[4].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[4].id}
+                href={"/products/" + bestProduct[4].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[4].title}
@@ -120,11 +145,16 @@ const PopularProducts = async () => {
           <div
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
-            <img src={bestProduct[5].images[0].url} className="w-24 h-24 object-contain mb-4" />
+            <img
+              src={bestProduct[5].images[0].url}
+              className="w-24 h-24 object-contain mb-4"
+            />
             <div className="flex flex-col gap-1">
-              <span className="text-gray-500 uppercase text-sm text-center">{bestProduct[5].type}</span>
+              <span className="text-gray-500 uppercase text-sm text-center">
+                {bestProduct[5].type}
+              </span>
               <Link
-                href={"/products/"+bestProduct[5].id}
+                href={"/products/" + bestProduct[5].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
                 {bestProduct[5].title}

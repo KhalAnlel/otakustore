@@ -3,15 +3,15 @@ import BestProducts from "./bestProducts";
 import HomeSlider from "./homeSlider";
 import PopularProducts from "./popularProducts";
 import ProductOfTheWeek from "./productOfTheWeek";
-import TopCollections from "./topCollections";
 import LogoClouds from "./logoClouds";
 import Promo from "./promo";
+import TopCategories from "./topCategories";
 
 const Home = () => {
   return (
     <div>
       <HomeSlider />
-      <TopCollections />
+      <TopCategories />
       <BestProducts />
       <Promo />
       <PopularProducts />

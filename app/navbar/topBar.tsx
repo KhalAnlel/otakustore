@@ -25,7 +25,6 @@ import Search from "../common/search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import { useDispatch } from "react-redux";
-import DownArrow from "../icons/downArrow";
 
 const TopBar = () => {
   const dispatch = useDispatch();
@@ -161,8 +160,8 @@ const TopBar = () => {
               data-focus="false"
               data-focus-visible="false"
             >
-              <Link href={"/products?query=" + category}>
-                {category.toLocaleUpperCase()}
+              <Link href={"/products?query=" + category.title}>
+                {category.title.toLocaleUpperCase()}
               </Link>
             </Button>
           </NavbarMenuItem>

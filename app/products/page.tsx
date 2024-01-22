@@ -14,7 +14,7 @@ interface Props {
     sort: string;
     items: string;
     page: string;
-    view:string;
+    view: string;
   };
 }
 
@@ -34,7 +34,7 @@ const Collection = async ({ searchParams }: Props) => {
   };
 
   const page = parseInt(searchParams.page) || 1;
-  const pageSize = parseInt(searchParams.items) || 10;
+  const pageSize = parseInt(searchParams.items) || 20;
 
   const products = await prisma.product.findMany({
     where,
@@ -62,9 +62,19 @@ const Collection = async ({ searchParams }: Props) => {
               <PerPage />
               <View />
             </div>
-            <div className={`flex mt-4 flex-wrap justify-center ${(!searchParams.view||searchParams.view==="grid")? "gap-4":"gap-0"}`}>
+            <div
+              className={`flex mt-4 flex-wrap justify-center ${
+                !searchParams.view || searchParams.view === "grid"
+                  ? "gap-4"
+                  : "gap-0"
+              }`}
+            >
               {products.map((product, index) => (
-                <ProductCard productCard={product} key={index} view={searchParams.view}/>
+                <ProductCard
+                  productCard={product}
+                  key={index}
+                  view={searchParams.view}
+                />
               ))}
             </div>
           </div>

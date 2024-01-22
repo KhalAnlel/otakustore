@@ -19,7 +19,12 @@ const BestProducts = async () => {
         <span className="text-black text-xl font-semibold">
           Best Products This Month
         </span>
-        <Button color="danger" href="/products" as="a" endContent={<LiftArrow />}>
+        <Button
+          color="danger"
+          href="/products"
+          as="a"
+          endContent={<LiftArrow />}
+        >
           View All
         </Button>
       </div>
@@ -29,11 +34,14 @@ const BestProducts = async () => {
             className="w-full h-44 flex bg-white border-1 items-center p-5 gap-4"
             key={index}
           >
-            <img src={product.images[0].url} className="w-44 h-32 object-contain" />
+            <img
+              src={product.images[0].url}
+              className="w-44 h-32 object-contain"
+            />
             <div className="flex flex-col gap-4">
               <span className="text-gray-500">Type of Product</span>
               <Link
-                href={"/products/"+product.id}
+                href={"/products/" + product.id}
                 className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-danger"
               >
                 {product.title}

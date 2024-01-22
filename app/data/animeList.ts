@@ -1,10 +1,33 @@
-const animeList=[
-    "attack on titan",
-    "naruto",
-    "vinland saga",
-    "one punch man",
-    "bleach",
-    "chainsaw man"
-]
+const animeList = [
+    "Attack on Titan",
+    "Black Clover",
+    "Code Geass",
+    "Cowboy Bebop",
+    "Death Note",
+    "Demon Slayer",
+    "Demon Slayer: Kimetsu no Yaiba",
+    "Dragon Ball Z",
+    "Fairy Tail",
+    "Fullmetal Alchemist: Brotherhood",
+    "Great Teacher Onizuka (GTO)",
+    "Haikyuu!!",
+    "Hunter x Hunter",
+    "JoJo's Bizarre Adventure",
+    "Made in Abyss",
+    "Mob Psycho 100",
+    "My Hero Academia",
+    "Naruto/Naruto Shippuden",
+    "Neon Genesis Evangelion",
+    "One Piece",
+    "One Punch Man",
+    "Parasyte: The Maxim",
+    "Re:Zero - Starting Life in Another World",
+    "Steins;Gate",
+    "Sword Art Online",
+    "The Promised Neverland",
+    "Tokyo Ghoul",
+    "Vinland Saga",
+    "Your Lie in April"
+  ]; 
 
-export default animeList;
+  export default animeList;

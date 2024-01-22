@@ -38,10 +38,7 @@ const ItemsTable = ({ products, images }: Props) => {
       {filteredItems.length === 0 ? (
         <div className="flex items-center flex-col p-28">
           <p className="text-black text-2xl">Cart is empty</p>
-          <Link
-            href={"/products"}
-            className="text-black hover:text-primary"
-          >
+          <Link href={"/products"} className="text-black hover:text-primary">
             Try To Add
           </Link>
         </div>
@@ -64,7 +61,7 @@ const ItemsTable = ({ products, images }: Props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredItems.map((item,index) => (
+                  {filteredItems.map((item, index) => (
                     <tr key={index}>
                       <td className="py-4">
                         <div className="flex items-center">

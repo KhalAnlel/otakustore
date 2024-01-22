@@ -8,12 +8,17 @@ import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import categories from "../data/categories";
 
-export default function TopCollections() {
+export default function TopCategories() {
   return (
     <div className="flex flex-col mt-10 p-10 sm:p-20">
       <div className="flex items-center justify-between">
-        <span className="text-black text-xl font-semibold">Collections</span>
-        <Button color="danger" as={"a"}  href="/collections" endContent={<LiftArrow />}>
+        <span className="text-black text-xl font-semibold">Top Categories</span>
+        <Button
+          color="danger"
+          as={"a"}
+          href="/products"
+          endContent={<LiftArrow />}
+        >
           View All
         </Button>
       </div>
@@ -45,18 +50,18 @@ export default function TopCollections() {
           {categories.map((category, index) => (
             <SwiperSlide key={index} className="mt-10">
               <div className="flex flex-col items-center">
-                <Link href={"/products/" + category}>
-                <img
-                  src={category}
-                  className="rounded-full w-44 h-44 object-cover transform-gpu transition-transform hover:scale-105"
-                  alt={category}
+                <Link href={"/products?query=" + category.title}>
+                  <img
+                    src={category.imgUrl}
+                    className="rounded-full w-44 h-44 object-cover transform-gpu transition-transform hover:scale-105"
+                    alt={category.imgUrl}
                   />
-                  </Link>
+                </Link>
                 <Link
-                  href={"/products/" + category}
+                  href={"/products?query=" + category.title}
                   className="text-black font-semibold mt-5 hover:text-danger uppercase"
                 >
-                  {category}
+                  {category.title}
                 </Link>
               </div>
             </SwiperSlide>

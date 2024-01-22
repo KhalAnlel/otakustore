@@ -21,11 +21,11 @@ const Product = async ({ params }: Props) => {
     },
   });
 
-  const products= await prisma.product.findMany({
-    include:{
+  const products = await prisma.product.findMany({
+    include: {
       images: true,
-    }
-  })
+    },
+  });
 
   if (!product) notFound();
 
@@ -50,12 +50,12 @@ const Product = async ({ params }: Props) => {
   });
   return (
     <div className="bg-white p-5">
-      <Breadcrumb title={product.title}/>
+      <Breadcrumb title={product.title} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
             <div className="h-[460px] rounded-lg bg-transparent dark:bg-transparent mb-4">
-             <ProductImages images={product.images}/>
+              <ProductImages images={product.images} />
             </div>
           </div>
           <div className="md:flex-1 px-4 ">
@@ -96,7 +96,7 @@ const Product = async ({ params }: Props) => {
         </div>
       </div>
       <div className="mt-20 p-10">
-        <MoreProducts products={products}/>
+        <MoreProducts products={products} />
       </div>
     </div>
   );
