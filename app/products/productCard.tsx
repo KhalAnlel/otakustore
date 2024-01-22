@@ -41,11 +41,11 @@ export default function ProductCard({ productCard, view }: Props) {
           href={"/products/" + productCard.id}
           className="text-tiny text-black font-bold hover:text-danger uppercase overflow-hidden"
         >
-          {productCard.title}
+          <p className="line-clamp-2">{productCard.title}</p>
         </Link>
         <Button
-          isDisabled
-          className="text-tiny disabled:text-black text-black font-bold bg-black/20"
+          as={"button"}
+          className="text-tiny cursor-default text-black font-bold bg-black/20"
           variant="flat"
           color="default"
           radius="lg"
@@ -69,9 +69,8 @@ export default function ProductCard({ productCard, view }: Props) {
         </Link>
       </div>
       <div className="flex flex-col  ml-3 gap-5">
-        <p className="text-xl font-bold  text-black">{productCard.title}</p>
-        <p className="text-lg font-semibold  text-black">
-          {productCard.description}
+        <p className="text-xl font-bold  text-black line-clamp-2">
+          {productCard.title}
         </p>
       </div>
       <div className="ml-auto flex flex-col gap-5">

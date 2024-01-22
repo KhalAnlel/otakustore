@@ -9,12 +9,12 @@ import TopCategories from "./home/topCategories";
 export default function app() {
   return (
     <div>
-      {/* <HomeSlider />
+      <HomeSlider />
       <TopCategories />
       <BestProducts />
       <Promo />
       <PopularProducts />
-      <ProductOfTheWeek /> */}
+      <ProductOfTheWeek />
       <LogoClouds />
     </div>
   );

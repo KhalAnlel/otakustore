@@ -50,11 +50,15 @@ const MoreProducts = ({ products }: Props) => {
       >
         {products.map((product, index) => (
           <SwiperSlide key={index}>
-            <Card isFooterBlurred radius="lg" className="border-none w-52 bg-transparent">
+            <Card
+              isFooterBlurred
+              radius="lg"
+              className="border-none w-52 bg-transparent"
+            >
               <Link href={"/products/" + product.id} className="m-auto">
                 <Image
                   alt={product.images[0].url}
-                  className="object-contain max-h-36 w-36"
+                  className="object-contain h-36 w-36"
                   src={product.images[0].url}
                 />
               </Link>
@@ -63,11 +67,11 @@ const MoreProducts = ({ products }: Props) => {
                   href={"/products/" + product.id}
                   className="text-tiny text-black font-bold hover:text-danger uppercase overflow-hidden"
                 >
-                  {product.title}
+                  <p className="line-clamp-2">{product.title}</p>
                 </Link>
                 <Button
-                  isDisabled
-                  className="text-tiny disabled:text-black text-black font-bold bg-black/20"
+                  as={"button"}
+                  className="text-tiny cursor-default text-black font-bold bg-black/20"
                   variant="flat"
                   color="default"
                   radius="lg"

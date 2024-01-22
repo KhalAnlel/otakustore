@@ -37,7 +37,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[0].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[0].title}
+                <p className="line-clamp-2">{bestProduct[0].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[0].price}
@@ -61,7 +61,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[1].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[1].title}
+                <p className="line-clamp-2">{bestProduct[1].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[1].price}
@@ -85,7 +85,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[2].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[2].title}
+                <p className="line-clamp-2">{bestProduct[2].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[2].price}
@@ -109,7 +109,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[3].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[3].title}
+                <p className="line-clamp-2">{bestProduct[3].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[3].price}
@@ -133,7 +133,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[4].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[4].title}
+                <p className="line-clamp-2">{bestProduct[4].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[4].price}
@@ -157,7 +157,7 @@ const PopularProducts = async () => {
                 href={"/products/" + bestProduct[5].id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                {bestProduct[5].title}
+                <p className="line-clamp-2">{bestProduct[5].title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
                 ${bestProduct[5].price}

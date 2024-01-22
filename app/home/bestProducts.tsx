@@ -42,9 +42,9 @@ const BestProducts = async () => {
               <span className="text-gray-500">Type of Product</span>
               <Link
                 href={"/products/" + product.id}
-                className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-danger"
+                className="text-sm font-semibold text-black w-fit hover:text-danger"
               >
-                {product.title}
+                <p className="line-clamp-2">{product.title}</p>
               </Link>
               <span className="text-xl  text-danger">${product.price}</span>
             </div>

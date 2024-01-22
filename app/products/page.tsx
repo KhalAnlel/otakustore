@@ -63,10 +63,13 @@ const Products = async ({ searchParams }: Props) => {
               <PerPage />
               <View />
             </div>
-            {(products.length===0)?(
-              <div className="h-60 flex items-center justify-center"><p className="text-black text-xl font-semibold">Products Not Found</p></div>
-            ):(
-
+            {products.length === 0 ? (
+              <div className="h-60 flex items-center justify-center">
+                <p className="text-black text-xl font-semibold">
+                  Products Not Found
+                </p>
+              </div>
+            ) : (
               <div
                 className={`flex mt-4 flex-wrap justify-center ${
                   !searchParams.view || searchParams.view === "grid"
