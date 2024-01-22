@@ -1,7 +1,4 @@
 import React from "react";
-import Quantity from "../common/quantity";
-import SelectColor from "../common/selectColor";
-import SelectSize from "../common/selectSize";
 import prisma from "@/prisma/client";
 
 const ProductOfTheWeek = async () => {

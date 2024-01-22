@@ -39,7 +39,7 @@ const ItemsTable = ({ products, images }: Props) => {
         <div className="flex items-center flex-col p-28">
           <p className="text-black text-2xl">Cart is empty</p>
           <Link
-            href={"/collections/all"}
+            href={"/products"}
             className="text-black hover:text-primary"
           >
             Try To Add
@@ -69,11 +69,11 @@ const ItemsTable = ({ products, images }: Props) => {
                       <td className="py-4">
                         <div className="flex items-center">
                           <img
-                            className="h-16 w-16 mr-4"
+                            className="h-16 w-16 mr-4 object-contain"
                             src={item.productImage?.url}
                             alt="Product image"
                           />
-                          <Link href={"/collections/all/products/" + item.id}>
+                          <Link href={"/products/" + item.id}>
                             <span className="font-semibold dark:text-black">
                               {item.name}
                             </span>

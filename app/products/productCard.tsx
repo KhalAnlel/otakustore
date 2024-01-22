@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function ProductCard({ productCard, view }: Props) {
-  return view === "grid" ? (
+  return (!view || view === "grid") ? (
     <Card
       isFooterBlurred
       radius="lg"
@@ -25,7 +25,7 @@ export default function ProductCard({ productCard, view }: Props) {
       key={productCard.id}
     >
       <Link
-        href={"/collections/collection/products/" + productCard.id}
+        href={"/products/" + productCard.id}
         className="flex justify-center dark:bg-white hover:scale-110 transition-all"
       >
         <Image
@@ -38,7 +38,7 @@ export default function ProductCard({ productCard, view }: Props) {
       </Link>
       <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
         <Link
-          href={"/collections/animes/products/" + productCard.id}
+          href={"/products/" + productCard.id}
           className="text-tiny text-black font-bold hover:text-danger uppercase overflow-hidden"
         >
           {productCard.title}
@@ -59,12 +59,12 @@ export default function ProductCard({ productCard, view }: Props) {
     <div key={productCard.id} className="flex w-full items-center border-1 p-10">
       <div>
         <Link
-          href={"/collections/collection/products/" + productCard.id}
-          className="flex justify-center dark:bg-white hover:scale-110 transition-all"
+          href={"/products/" + productCard.id}
+          className=""
         >
           <img
             src={productCard.images[0].url}
-            className="w-44 h-40 object-contain rounded-lg p-2"
+            className="w-28 h-48 object-cover rounded-lg p-2 hover:scale-110 transition-all"
           />
         </Link>
       </div>
@@ -76,7 +76,7 @@ export default function ProductCard({ productCard, view }: Props) {
         <p className="text-xl font-semibold text-center text-black">Price: <span className="text-danger">${productCard.price}</span></p>
         <Button variant="solid" color="danger">
         <Link
-          href={"/collections/collection/products/" + productCard.id}
+          href={"/products/" + productCard.id}
           className="bg-transparent"
         >
           View Product

@@ -15,26 +15,18 @@ const BottomBar = () => {
   return (
     <div className="hidden gap-8 justify-center bg-silver dark:bg-midnightblue md:flex">
       {categories.map((category, index) => (
-        <Dropdown key={index}>
-          <DropdownTrigger>
-            <Button
-              key={index}
-              className="hover:text-danger"
-              variant="light"
-              data-hover="transparent"
-              data-focus="false"
-              data-focus-visible="false"
-              startContent={<DownArrow />}
-            >
-              <Link href={"/collections/" + category}>
-                {category.toLocaleUpperCase()}
-              </Link>
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Static Actions">
-            <DropdownItem>Item</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        <Button
+          key={index}
+          className="hover:text-danger"
+          variant="light"
+          data-hover="transparent"
+          data-focus="false"
+          data-focus-visible="false"
+        >
+          <Link href={"/products?query=" + category}>
+            {category.toLocaleUpperCase()}
+          </Link>
+        </Button>
       ))}
     </div>
   );

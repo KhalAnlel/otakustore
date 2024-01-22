@@ -3,10 +3,10 @@ import React from "react";
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import collections from "../data/collections";
 import LiftArrow from "../icons/liftArrow";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import categories from "../data/categories";
 
 export default function TopCollections() {
   return (
@@ -42,21 +42,21 @@ export default function TopCollections() {
             },
           }}
         >
-          {collections.map((collection, index) => (
+          {categories.map((category, index) => (
             <SwiperSlide key={index} className="mt-10">
               <div className="flex flex-col items-center">
-                <Link href={"/collections/" + collection.title}>
+                <Link href={"/products/" + category}>
                 <img
-                  src={collection.imgUrl}
+                  src={category}
                   className="rounded-full w-44 h-44 object-cover transform-gpu transition-transform hover:scale-105"
-                  alt={collection.title}
+                  alt={category}
                   />
                   </Link>
                 <Link
-                  href={"/collections/" + collection.title}
+                  href={"/products/" + category}
                   className="text-black font-semibold mt-5 hover:text-danger uppercase"
                 >
-                  {collection.title}
+                  {category}
                 </Link>
               </div>
             </SwiperSlide>

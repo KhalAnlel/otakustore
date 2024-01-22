@@ -21,6 +21,12 @@ const Product = async ({ params }: Props) => {
     },
   });
 
+  const products= await prisma.product.findMany({
+    include:{
+      images: true,
+    }
+  })
+
   if (!product) notFound();
 
   const allColors = await prisma.color.findMany();
@@ -90,7 +96,7 @@ const Product = async ({ params }: Props) => {
         </div>
       </div>
       <div className="mt-20 p-10">
-        <MoreProducts />
+        <MoreProducts products={products}/>
       </div>
     </div>
   );

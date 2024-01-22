@@ -19,7 +19,7 @@ const BestProducts = async () => {
         <span className="text-black text-xl font-semibold">
           Best Products This Month
         </span>
-        <Button color="danger" href="/collections/collection" as="a" endContent={<LiftArrow />}>
+        <Button color="danger" href="/products" as="a" endContent={<LiftArrow />}>
           View All
         </Button>
       </div>
@@ -33,7 +33,7 @@ const BestProducts = async () => {
             <div className="flex flex-col gap-4">
               <span className="text-gray-500">Type of Product</span>
               <Link
-                href={"/collections/collection/products/"+product.id}
+                href={"/products/"+product.id}
                 className="text-sm font-semibold text-black line-clamp-2 w-11/12 hover:text-danger"
               >
                 {product.title}

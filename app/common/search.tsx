@@ -13,7 +13,7 @@ const Search = () => {
     }
     const trimmedSearchValue = searchValue.trim();
     e.preventDefault();
-    router.push(`/collections/all/?query=${trimmedSearchValue}`);
+    router.push(`/products?query=${trimmedSearchValue}`);
   };
   return (
     <form onSubmit={handleSearch}>

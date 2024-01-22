@@ -32,7 +32,7 @@ const Breadcrumb = ({ title }: Props) => {
                 ></path>
               </svg>
               <a
-                href="/collections"
+                href="/products"
                 className="flex font-medium text-gray-700 hover:text-gray-900"
               >
                 Collections
@@ -55,7 +55,7 @@ const Breadcrumb = ({ title }: Props) => {
                   ></path>
                 </svg>
                 <a
-                  href="/collections"
+                  href="/products"
                   className="flex font-medium text-gray-700 hover:text-gray-900"
                 >
                  {title}

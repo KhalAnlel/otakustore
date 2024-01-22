@@ -27,7 +27,6 @@ import { RootState } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import DownArrow from "../icons/downArrow";
 
-
 const TopBar = () => {
   const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,9 +49,9 @@ const TopBar = () => {
           className="md:hidden text-black dark:text-white"
         />
         <NavbarBrand>
-            <Link href="/" className="font-bold text-black dark:text-white">
-              LOGO
-            </Link>
+          <Link href="/" className="font-bold text-black dark:text-white">
+            LOGO
+          </Link>
         </NavbarBrand>
       </NavbarContent>
       <NavbarContent as="div" className="hidden sm:flex gap-4" justify="center">
@@ -120,7 +119,7 @@ const TopBar = () => {
               <DropdownMenu
                 aria-label="opening cart menu"
                 closeOnSelect={false}
-                disabledKeys={["count","price"]}
+                disabledKeys={["count", "price"]}
                 className="max-h-72 overflow-auto"
               >
                 <DropdownSection showDivider>
@@ -130,7 +129,7 @@ const TopBar = () => {
                     </span>
                   </DropdownItem>
                   <DropdownItem key="price">
-                    <span className="font-bold text-white text-sm">
+                    <span className="font-bold dark:text-white text-sm">
                       Total Price: ${totalPrice}
                     </span>
                   </DropdownItem>
@@ -155,25 +154,17 @@ const TopBar = () => {
       <NavbarMenu className="">
         {categories.map((category, index) => (
           <NavbarMenuItem key={index}>
-            <Dropdown>
-              <DropdownTrigger>
-                <Button
-                  className="hover:text-danger uppercase dark:text-white"
-                  variant="light"
-                  data-hover="transparent"
-                  data-focus="false"
-                  data-focus-visible="false"
-                  startContent={<DownArrow />}
-                >
-                  {category}
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions">
-                <DropdownItem className="text-black dark:bg-zinc-700">
-                  Item
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            <Button
+              className="hover:text-danger uppercase dark:text-white"
+              variant="light"
+              data-hover="transparent"
+              data-focus="false"
+              data-focus-visible="false"
+            >
+              <Link href={"/products?query=" + category}>
+                {category.toLocaleUpperCase()}
+              </Link>
+            </Button>
           </NavbarMenuItem>
         ))}
         <NavbarMenuItem className="mt-10">
