@@ -13,7 +13,7 @@ export default function app() {
       <TopCategories />
       <BestProducts />
       <Promo />
-      <PopularProducts />
+      {/* <PopularProducts /> */}
       <ProductOfTheWeek />
       <LogoClouds />
     </div>
