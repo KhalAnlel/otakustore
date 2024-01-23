@@ -24,17 +24,15 @@ import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "../common/search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
-import { useDispatch } from "react-redux";
 
 const TopBar = () => {
-  const dispatch = useDispatch();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const favItems = useSelector((state: RootState) => state.fav.items);
 
   let totalPrice = 0;
   cartItems.map((item) => {
-    totalPrice += item.price;
+    totalPrice = totalPrice + item.price * item.selectedQuantity;
   });
 
   return (
@@ -48,8 +46,11 @@ const TopBar = () => {
           className="md:hidden text-black dark:text-white"
         />
         <NavbarBrand>
-          <Link href="/" className="font-bold text-black dark:text-white">
-            LOGO
+          <Link
+            href="/"
+            className="font-bold text-black dark:text-white uppercase"
+          >
+            Otako Store
           </Link>
         </NavbarBrand>
       </NavbarContent>
@@ -160,7 +161,9 @@ const TopBar = () => {
               data-focus="false"
               data-focus-visible="false"
             >
-              <Link href={"/products?query=" + category.title.toLocaleLowerCase()}>
+              <Link
+                href={"/products?query=" + category.title.toLocaleLowerCase()}
+              >
                 {category.title.toLocaleUpperCase()}
               </Link>
             </Button>

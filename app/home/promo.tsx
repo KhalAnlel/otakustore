@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Promo = () => {
@@ -7,11 +8,10 @@ const Promo = () => {
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Summer styles are finally here
+            Welcome to Otaku Store - Your Anime Haven!
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-              This year, our new summer collection will shelter you from the
-              harsh elements of a world that doesnt care if you live or die.
+            Indulge your passion for anime with our extensive and carefully curated collection. From classic series to the latest releases, we've got it all. Whether you're a seasoned otaku or just starting your anime journey, Otako Store is your one-stop destination for all things anime.
             </p>
           </div>
           <div>
@@ -25,38 +25,15 @@ const Promo = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
-                          alt=""
+                          src="https://m.media-amazon.com/images/I/610PmGC-3XS._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/610PmGC-3XS._AC_UL480_FMwebp_QL65_.jpg"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                          alt=""
+                          src="https://m.media-amazon.com/images/I/81RP8T0X4DL._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/81RP8T0X4DL._AC_UL480_FMwebp_QL65_.jpg"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -64,15 +41,38 @@ const Promo = () => {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
-                          alt=""
+                          src="https://m.media-amazon.com/images/I/61B6JAft5-L._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/61B6JAft5-L._AC_UL480_FMwebp_QL65_.jpg"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
-                          alt=""
+                          src="https://m.media-amazon.com/images/I/81c6Mt0J4gL._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/81c6Mt0J4gL._AC_UL480_FMwebp_QL65_.jpg"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                          src="https://m.media-amazon.com/images/I/71KISOAkb6L._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/71KISOAkb6L._AC_UL480_FMwebp_QL65_.jpg"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                    </div>
+                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                          src="https://m.media-amazon.com/images/I/71iCdR5Nv3L._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/71iCdR5Nv3L._AC_UL480_FMwebp_QL65_.jpg"
+                          className="h-full w-full object-cover object-center"
+                        />
+                      </div>
+                      <div className="h-64 w-44 overflow-hidden rounded-lg">
+                        <img
+                          src="https://m.media-amazon.com/images/I/617XVQ69eyS._AC_UL480_FMwebp_QL65_.jpg"
+                          alt="https://m.media-amazon.com/images/I/617XVQ69eyS._AC_UL480_FMwebp_QL65_.jpg"
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -81,12 +81,12 @@ const Promo = () => {
                 </div>
               </div>
 
-              <a
-                href="#"
+              <Link
+                href="/products"
                 className="bg-danger hover:bg-gray-800 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium text-white"
               >
                 Check Our Products
-              </a>
+              </Link>
             </div>
           </div>
         </div>

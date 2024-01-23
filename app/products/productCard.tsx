@@ -45,7 +45,7 @@ export default function ProductCard({ productCard, view }: Props) {
         </Link>
         <Button
           as={"button"}
-          className="text-tiny cursor-default text-black font-bold bg-black/20"
+          className="text-sm cursor-default text-danger font-bold bg-black/20"
           variant="flat"
           color="default"
           radius="lg"

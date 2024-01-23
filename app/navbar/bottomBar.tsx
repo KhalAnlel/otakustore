@@ -11,7 +11,7 @@ const BottomBar = () => {
       {displayedCategories.map((category, index) => (
         <Button
           key={index}
-          className="hover:text-danger"
+          className="hover:text-danger p-0 px-5"
           variant="light"
           data-hover="transparent"
           data-focus="false"

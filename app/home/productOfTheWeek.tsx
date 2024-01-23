@@ -1,5 +1,6 @@
 import React from "react";
 import prisma from "@/prisma/client";
+import Link from "next/link";
 
 const ProductOfTheWeek = async () => {
   const bestProduct = await prisma.product.findFirst({
@@ -16,7 +17,7 @@ const ProductOfTheWeek = async () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row -mx-4">
             <div className="md:flex-1 px-4">
-              <div className="h-[260px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
+              <div className="h-[260px] rounded-lg bg-gray-300 dark:bg-transparent mb-4">
                 <img
                   className="w-full h-full object-contain"
                   src={bestProduct?.images[0].url}
@@ -54,15 +55,12 @@ const ProductOfTheWeek = async () => {
                   {bestProduct?.description}
                 </p>
               </div>
-              <div className="flex -mx-2 mb-4">
+              <div className="flex -mx-2 my-4">
                 <div className="w-1/2 px-2">
                   <button className="w-full bg-danger hover:bg-gray-800 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium text-white">
-                    Add to Cart
-                  </button>
-                </div>
-                <div className="w-1/2 px-2">
-                  <button className="w-full bg-gray-300 hover:bg-gray-800 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium text-black hover:text-white">
-                    Add to Wishlist
+                    <Link href={"/products/"+bestProduct?.id}>
+                    Check Product
+                    </Link>
                   </button>
                 </div>
               </div>

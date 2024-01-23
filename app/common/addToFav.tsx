@@ -15,7 +15,7 @@ const AddToFav = ({ productId }: Props) => {
     dispatch(addFavItem(item));
     toast.success("Item Added successfully.", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

@@ -20,13 +20,10 @@ const AddToCart = ({
   selectedQuantity,
 }: Props) => {
   const dispatch = useDispatch();
-
-  const finalPrice = price * selectedQuantity;
-
   const handleAddToCart = () => {
     const item = {
       id: productId,
-      price: finalPrice,
+      price: price,
       selectedColor,
       selectedSize,
       selectedQuantity,
@@ -35,7 +32,7 @@ const AddToCart = ({
 
     toast.success("Item Added successfully.", {
       position: "top-right",
-      autoClose: 3000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

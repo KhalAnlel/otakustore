@@ -37,7 +37,7 @@ const ItemsTable = ({ cartItems, images }: Props) => {
 
   let totalPrice = 0;
   filteredItems.map((item) => {
-    totalPrice += item.price;
+    totalPrice = totalPrice + item.price * item.quantity;
   });
 
   const handleRemoveFromCart = (itemId: string) => {
@@ -80,7 +80,7 @@ const ItemsTable = ({ cartItems, images }: Props) => {
                 <tbody>
                   {filteredItems.map((item, index) => (
                     <tr key={index}>
-                      <td className="py-4">
+                      <td className="py-4 w-2/4">
                         <div className="flex items-center">
                           <img
                             className="h-16 w-16 mr-4 object-contain"
@@ -88,15 +88,17 @@ const ItemsTable = ({ cartItems, images }: Props) => {
                             alt="Product image"
                           />
                           <Link href={"/products/" + item.id}>
-                            <span className="font-semibold dark:text-black">
+                            <span className="font-semibold dark:text-black line-clamp-2">
                               {item.name}
                             </span>
                           </Link>
                         </div>
                       </td>
                       <td className="py-4 dark:text-black">${item.price}</td>
-                      <td className="py-4 dark:text-black">{item.quantity}</td>
-                      <td className="py-4 dark:text-black">${item.price}</td>
+                      <td className="py-4 dark:text-black">x{item.quantity}</td>
+                      <td className="py-4 dark:text-black">
+                        ${item.price * item.quantity}
+                      </td>
                       <td className="py-4 dark:text-black">
                         <span
                           className="text-danger hover:cursor-pointer hover:opacity-65"
