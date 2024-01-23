@@ -11,7 +11,7 @@ const Promo = () => {
             Welcome to Otaku Store - Your Anime Haven!
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-            Indulge your passion for anime with our extensive and carefully curated collection. From classic series to the latest releases, we've got it all. Whether you're a seasoned otaku or just starting your anime journey, Otako Store is your one-stop destination for all things anime.
+            Indulge your passion for anime with our extensive and carefully curated collection. From classic series to the latest releases, we' have got it all. Whether you are a seasoned otaku or just starting your anime journey, Otako Store is your one-stop destination for all things anime.
             </p>
           </div>
           <div>
