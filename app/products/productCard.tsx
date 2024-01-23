@@ -64,17 +64,17 @@ export default function ProductCard({ productCard, view }: Props) {
         <Link href={"/products/" + productCard.id} className="">
           <img
             src={productCard.images[0].url}
-            className="w-28 h-48 object-cover rounded-lg p-2 hover:scale-110 transition-all"
+            className="w-44 h-48 object-contain rounded-lg p-2 hover:scale-110 transition-all"
           />
         </Link>
       </div>
-      <div className="flex flex-col  ml-3 gap-5">
-        <p className="text-xl font-bold  text-black line-clamp-2">
+      <div className="flex flex-col  ml-3 gap-5 w-96">
+        <p className="text-sm font-bold md:text-xl text-black line-clamp-3">
           {productCard.title}
         </p>
       </div>
       <div className="ml-auto flex flex-col gap-5">
-        <p className="text-xl font-semibold text-center text-black">
+        <p className="text-sm md:text-xl font-semibold text-center text-black">
           Price: <span className="text-danger">${productCard.price}</span>
         </p>
         <Button variant="solid" color="danger">

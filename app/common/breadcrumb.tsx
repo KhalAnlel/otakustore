@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface Props {
@@ -10,12 +11,12 @@ const Breadcrumb = ({ title }: Props) => {
       <nav className="flex mt-1">
         <ol className="flex flex-wrap text-sm">
           <li className="inline-flex items-center">
-            <a
+            <Link
               href="/"
               className="flex font-medium text-gray-700 hover:text-gray-900"
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
             <div className="flex items-center">
@@ -31,12 +32,12 @@ const Breadcrumb = ({ title }: Props) => {
                   clipRule="evenodd"
                 ></path>
               </svg>
-              <a
+              <Link
                 href="/products"
                 className="flex font-medium text-gray-700 hover:text-gray-900"
               >
                 Products
-              </a>
+              </Link>
             </div>
           </li>
           {title ? (
@@ -54,12 +55,12 @@ const Breadcrumb = ({ title }: Props) => {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <a
+                <Link
                   href="/products"
                   className="flex font-medium text-gray-700 hover:text-gray-900"
                 >
                   {title.toLocaleUpperCase()}
-                </a>
+                </Link>
               </div>
             </li>
           ) : (

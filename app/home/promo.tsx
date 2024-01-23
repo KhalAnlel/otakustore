@@ -8,10 +8,14 @@ const Promo = () => {
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Welcome to Otaku Store - Your Anime Haven!
+              Welcome to Otaku Store - Your Anime Haven!
             </h1>
             <p className="mt-4 text-xl text-gray-500">
-            Indulge your passion for anime with our extensive and carefully curated collection. From classic series to the latest releases, we have got it all. Whether you are a seasoned otaku or just starting your anime journey, Otako Store is your one-stop destination for all things anime.
+              Indulge your passion for anime with our extensive and carefully
+              curated collection. From classic series to the latest releases, we
+              have got it all. Whether you are a seasoned otaku or just starting
+              your anime journey, Otako Store is your one-stop destination for
+              all things anime.
             </p>
           </div>
           <div>
@@ -83,7 +87,7 @@ const Promo = () => {
 
               <Link
                 href="/products"
-                className="bg-danger hover:bg-gray-800 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium text-white"
+                className="bg-danger hover:bg-gray-800 inline-block rounded-md border border-transparent px-5 py-3 text-center font-medium text-white"
               >
                 Check Our Products
               </Link>

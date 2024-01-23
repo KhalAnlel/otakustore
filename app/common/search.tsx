@@ -16,15 +16,16 @@ const Search = () => {
     router.push(`/products?query=${trimmedSearchValue}`);
   };
   return (
-    <form onSubmit={handleSearch}>
+    <form onSubmit={handleSearch} className="w-96">
       <Input
+        variant="bordered"
         classNames={{
-          base: "max-w-full md:max-w-[20rem] h-10",
+          base: "max-w-full",
           mainWrapper: "h-full",
-          input: "text-small",
-          inputWrapper:
-            "h-full font-normal text-black bg-transparent dark:text-white border-1 dark:border-white border-slate-900",
+          input: "text-small text-black",
+          inputWrapper: "h-full font-normal text-black bg-transparent",
         }}
+        color="danger"
         placeholder="Type to search..."
         size="sm"
         startContent={<SearchMag />}

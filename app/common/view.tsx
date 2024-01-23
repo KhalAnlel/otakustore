@@ -16,7 +16,7 @@ const View = () => {
     router.push("?" + params.toString());
   };
   return (
-    <div className="flex gap-2 items-center text-black">
+    <div className="flex gap-2 items-center text-black px-4">
       View:
       <button
         className={`hover:text-danger ${value === "grid" ? "text-danger" : ""}`}

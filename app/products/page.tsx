@@ -1,4 +1,3 @@
-import Filters from "@/app/common/filters";
 import React from "react";
 import Breadcrumb from "@/app/common/breadcrumb";
 import prisma from "@/prisma/client";
@@ -6,7 +5,9 @@ import PerPage from "@/app/common/perPage";
 import SortBy from "@/app/common/sortBy";
 import View from "@/app/common/view";
 import ProductCard from "./productCard";
-import { notFound } from "next/navigation";
+import Filters from "../common/filters";
+import Search from "../common/search";
+import Paginating from "../common/paginating";
 
 interface Props {
   searchParams: {
@@ -48,17 +49,21 @@ const Products = async ({ searchParams }: Props) => {
       images: true,
     },
   });
+
+  const itemsCount = await prisma.product.count({ where });
+
   return (
     <div className="p-5">
       <Breadcrumb title={searchParams.query} />
-      <div className="flex gap-10 m-0 sm:m-10">
-        <div className="w-60 h-fit dark:bg-gray-200 rounded-lg hidden sm:flex">
-          <Filters />
-        </div>
+      <div className="flex gap-2 m-2 sm:m-5">
         <div className="w-full">
-          <div className="dark:bg-gray-200 rounded-lg p-3">
+          <div className="dark:bg-white rounded-lg p-3 flex flex-col gap-4">
             <h1 className="text-xl font-bold text-black">Products</h1>
-            <div className="flex justify-end">
+            <div className="w-full flex justify-center">
+              <Search />
+            </div>
+            <div className="flex justify-center flex-wrap">
+              <Filters />
               <SortBy />
               <PerPage />
               <View />
@@ -87,6 +92,7 @@ const Products = async ({ searchParams }: Props) => {
               </div>
             )}
           </div>
+          <Paginating itemsCount={itemsCount} pageSize={pageSize} />
         </div>
       </div>
     </div>

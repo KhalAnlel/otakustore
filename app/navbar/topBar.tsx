@@ -35,6 +35,8 @@ const TopBar = () => {
     totalPrice = totalPrice + item.price * item.selectedQuantity;
   });
 
+  const displayedCategories = categories.slice(7, 14);
+
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
@@ -53,9 +55,6 @@ const TopBar = () => {
             Otako Store
           </Link>
         </NavbarBrand>
-      </NavbarContent>
-      <NavbarContent as="div" className="hidden sm:flex gap-4" justify="center">
-        <Search />
       </NavbarContent>
       <NavbarContent justify="end" className="gap-2">
         <NavbarItem>
@@ -152,10 +151,10 @@ const TopBar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu className="">
-        {categories.map((category, index) => (
+        {displayedCategories.map((category, index) => (
           <NavbarMenuItem key={index}>
             <Button
-              className="hover:text-danger uppercase dark:text-white"
+              className="hover:text-danger uppercase dark:text-white flex justify-start"
               variant="light"
               data-hover="transparent"
               data-focus="false"
@@ -169,9 +168,6 @@ const TopBar = () => {
             </Button>
           </NavbarMenuItem>
         ))}
-        <NavbarMenuItem className="mt-10">
-          <Search />
-        </NavbarMenuItem>
       </NavbarMenu>
     </Navbar>
   );
