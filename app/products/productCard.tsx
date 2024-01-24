@@ -21,7 +21,7 @@ export default function ProductCard({ productCard, view }: Props) {
     <Card
       isFooterBlurred
       radius="lg"
-      className="border-none w-64"
+      className="border-none w-80 sm:w-64"
       key={productCard.id}
     >
       <Link
@@ -30,10 +30,8 @@ export default function ProductCard({ productCard, view }: Props) {
       >
         <Image
           alt={productCard.images[0].url}
-          className="object-contain max-h-44"
-          height={200}
+          className="object-contain max-h-44 w-full"
           src={productCard.images[0].url}
-          width={200}
         />
       </Link>
       <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -58,27 +56,31 @@ export default function ProductCard({ productCard, view }: Props) {
   ) : (
     <div
       key={productCard.id}
-      className="flex w-full items-center border-1 p-10"
+      className="flex w-full items-center border-1 p-4 sm:p-6"
     >
       <div>
         <Link href={"/products/" + productCard.id} className="">
           <img
             src={productCard.images[0].url}
-            className="w-44 h-48 object-contain rounded-lg p-2 hover:scale-110 transition-all"
+            className="w-44 min-w-20 h-44 min-h-20 object-contain rounded-lg p-2 hover:scale-110 transition-all"
           />
         </Link>
       </div>
       <div className="flex flex-col  ml-3 gap-5 w-96">
-        <p className="text-sm font-bold md:text-xl text-black line-clamp-3">
+        <p className="text-sm font-bold md:text-lg text-black line-clamp-3">
           {productCard.title}
         </p>
       </div>
       <div className="ml-auto flex flex-col gap-5">
         <p className="text-sm md:text-xl font-semibold text-center text-black">
-          Price: <span className="text-danger">${productCard.price}</span>
+          Price:{" "}
+          <span className="text-danger font-bold">${productCard.price}</span>
         </p>
-        <Button variant="solid" color="danger">
-          <Link href={"/products/" + productCard.id} className="bg-transparent">
+        <Button variant="solid" color="danger" className="px-0 md:px-5">
+          <Link
+            href={"/products/" + productCard.id}
+            className="bg-transparent text-tiny sm:text-md"
+          >
             View Product
           </Link>
         </Button>

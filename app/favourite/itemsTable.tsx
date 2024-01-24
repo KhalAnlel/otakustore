@@ -37,7 +37,7 @@ const ItemsTable = ({ products, images }: Props) => {
     <div>
       {filteredItems.length === 0 ? (
         <div className="flex items-center flex-col p-28">
-          <p className="text-black text-2xl">Favourite Cart is empty</p>
+          <p className="text-black text-2xl text-center">Favourite Cart is Empty</p>
           <Link href={"/products"} className="text-black hover:text-primary">
             Try To Add
           </Link>

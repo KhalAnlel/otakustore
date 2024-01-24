@@ -24,6 +24,7 @@ import { ThemeSwitcher } from "../common/themeSwitcher";
 import Search from "../common/search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import DownArrow from "../icons/downArrow";
 
 const TopBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,7 +36,8 @@ const TopBar = () => {
     totalPrice = totalPrice + item.price * item.selectedQuantity;
   });
 
-  const displayedCategories = categories.slice(7, 14);
+  const displayedCategories = categories.slice(0, 8);
+  const otherCategories = categories.slice(8, 14);
 
   return (
     <Navbar
@@ -150,7 +152,7 @@ const TopBar = () => {
           </Badge>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu className="">
+      <NavbarMenu>
         {displayedCategories.map((category, index) => (
           <NavbarMenuItem key={index}>
             <Button
@@ -168,6 +170,29 @@ const TopBar = () => {
             </Button>
           </NavbarMenuItem>
         ))}
+        <Dropdown>
+          <DropdownTrigger>
+            <Button
+              variant="light"
+              className="w-6"
+              startContent={<DownArrow />}
+            >
+              More
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Static Actions">
+            {otherCategories.map((category, index) => (
+              <DropdownItem key={index}>
+                <Link
+                  href={"/products?query=" + category.title.toLocaleLowerCase()}
+                  className="hover:text-danger"
+                >
+                  {category.title.toLocaleUpperCase()}
+                </Link>
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        </Dropdown>
       </NavbarMenu>
     </Navbar>
   );
