@@ -28,7 +28,7 @@ export default function PerPage() {
       <DropdownTrigger>
         <Button
           variant="faded"
-          className="capitalize border-0 bg-transparent text-black hover:text-danger"
+          className="capitalize border-0 dark:bg-transparent text-black hover:text-danger"
         >
           Display: <span className="font-bold">{value} per page</span>
         </Button>
