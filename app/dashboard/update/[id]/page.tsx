@@ -2,8 +2,16 @@ import React from "react";
 import prisma from "@/prisma/client";
 import UpdateForm from "./updateForm";
 
-const Update = async () => {
+
+interface Props {
+  params: { id: string };
+}
+
+const Update = async ({params}:Props) => {
   const products = await prisma.product.findMany({
+    where:{
+      id:parseInt(params.id)
+    },
     include: {
       ProductColor: true,
       ProductSize: true,
@@ -18,14 +26,6 @@ const Update = async () => {
 
         return (
           <div key={product.id}>
-            <p>{product.id}</p>
-            <p>{product.title}</p>
-            <p>{product.price}</p>
-            <p>{product.stock}</p>
-            <p>{product.type}</p>
-            <p>{product.category}</p>
-            <p>{product.rate}</p>
-            <p>{product.addedAt.getDate()}</p>
             <UpdateForm product={{ ...product, color_ids, size_ids }} />
           </div>
         );

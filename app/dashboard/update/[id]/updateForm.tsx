@@ -4,7 +4,10 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import colors from "@/app/data/colors";
 import sizes from "@/app/data/sizes";
-
+import { Button, Input, Select, SelectItem } from "@nextui-org/react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 interface Props {
   product: {
     id: number;
@@ -27,6 +30,7 @@ interface ItemForm extends Omit<Props["product"], "id"> {
 // ... Other imports
 
 const UpdateForm: React.FC<Props> = ({ product }) => {
+  const router = useRouter();
   const { register, handleSubmit, setValue } = useForm<ItemForm>();
   const [selectedColors, setSelectedColors] = useState<number[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<number[]>([]);
@@ -44,6 +48,8 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
     setSelectedSizes(product.size_ids);
   }, [product, setValue]);
 
+  
+
   const onSubmit = async (data: ItemForm) => {
     // Convert relevant form values to numbers
     data.price = parseInt(data.price as any, 10);
@@ -54,54 +60,33 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
     data.color_ids = selectedColors;
     data.size_ids = selectedSizes;
 
+     toast.success("Item Added successfully.", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+
     // Send the data to the API
     await axios.patch(`/api/products/${product.id}`, data);
+    router.push("/dashboard")
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 w-96 m-auto"
+      className="flex flex-col gap-4 p-10"
     >
-      <label>Title</label>
-      <input type="text" {...register("title")} className="input rounded-md" />
-
-      <label>Description</label>
-      <input
-        type="text"
-        {...register("description")}
-        className="input rounded-md"
-      />
-
-      <label>Price</label>
-      <input
-        type="number"
-        {...register("price")}
-        className="input rounded-md"
-      />
-
-      <label>Rate</label>
-      <input type="number" {...register("rate")} className="input rounded-md" />
-
-      <label>Stock</label>
-      <input
-        type="number"
-        {...register("stock")}
-        className="input rounded-md"
-      />
-
-      <label>Type</label>
-      <input type="text" {...register("type")} className="input rounded-md" />
-
-      <label>Category</label>
-      <input
-        type="text"
-        {...register("category")}
-        className="input rounded-md"
-      />
-
-      {/* Colors Multi-Select */}
-      <div>
+      <Input type="text" variant="bordered" {...register("title")} defaultValue={product.title} label="Title"/>
+      <Input type="text" variant="bordered" {...register("description")} defaultValue={product.description} label="Description"/>
+      <Input type="text" variant="bordered" {...register("price")} defaultValue={product.price.toString()} label="Price"/>
+      <Input type="text" variant="bordered" {...register("rate")} defaultValue={product.rate.toString()} label="Rate"/>
+      <Input type="text" variant="bordered" {...register("stock")} defaultValue={product.stock.toString()} label="Stock"/>
+      <Input type="text" variant="bordered" {...register("type")} defaultValue={product.type} label="Type"/>
+      <Input type="text" variant="bordered" {...register("category")} defaultValue={product.category} label="Category"/>
+       <div>
         <select
           data-te-select-init
           multiple
@@ -122,8 +107,6 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
         </select>
         <label>Select Colors</label>
       </div>
-
-      {/* Sizes Multi-Select */}
       <div>
         <select
           data-te-select-init
@@ -146,9 +129,9 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
         <label>Select Sizes</label>
       </div>
 
-      <button className="btn btn-primary" type="submit">
+      <Button variant="bordered" className="text-danger hover:bg-danger hover:text-white" type="submit">
         Submit
-      </button>
+      </Button>
     </form>
   );
 };
