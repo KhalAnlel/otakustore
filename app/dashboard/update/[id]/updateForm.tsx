@@ -153,7 +153,7 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
       <label className="font-bold text-black">Select Colors</label>
       <div className="h-96 overflow-auto flex flex-col gap-1 bg-gray-200 p-2 rounded-lg">
         {colors.map((color, index) => (
-          <div>
+          <div key={index}>
             <input
               type="checkbox"
               key={index + 1}
@@ -180,7 +180,7 @@ const UpdateForm: React.FC<Props> = ({ product }) => {
       <label className="font-bold text-black">Select Sizes</label>
       <div className="h-48 overflow-auto flex flex-col gap-1 bg-gray-200 p-2 rounded-lg">
         {sizes.map((size, index) => (
-          <div>
+          <div key={index}>
             <input
               type="checkbox"
               key={index + 1}
