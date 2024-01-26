@@ -36,7 +36,7 @@ interface Props {
 
 export default function ProductsTable({ products }: Props) {
   return (
-    <Table aria-label="Example static collection table" className="overflow-auto">
+    <Table aria-label="Example static collection table" className="overflow-auto" classNames={{wrapper:"rounded-none"}}>
       <TableHeader>
         <TableColumn>ID</TableColumn>
         <TableColumn>TITLE</TableColumn>

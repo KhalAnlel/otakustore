@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import colors from '@/app/data/colors'
 import sizes from '@/app/data/sizes'
+import { Button, Input } from "@nextui-org/react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ItemForm {
   title: string;
@@ -23,122 +26,163 @@ const Add = () => {
   const [selectedColors, setSelectedColors] = useState<number[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<number[]>([]);
 
-  const onSubmit = async (data: ItemForm) => {
-    // Convert price, rate, and stock to numbers
-    data.price = parseInt(data.price as any);
-    data.rate = parseInt(data.rate as any);
-    data.stock = parseInt(data.stock as any);
+  const isSubmitDisabled =
+  selectedColors.length === 0 || selectedSizes.length === 0;
 
-    // Update the data with selected color_ids
+  const onSubmit = async (data: ItemForm) => {
+    data.price = parseInt(data.price as any, 10);
+    data.rate = parseInt(data.rate as any, 10);
+    data.stock = parseInt(data.stock as any, 10);
     data.color_ids = selectedColors;
     data.size_ids = selectedSizes;
 
-    // Send the data to the API
+    toast.success("Item Updated Successfully.", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+
     await axios.post("/api/products", data);
   };
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-4 w-96 m-auto"
+    onSubmit={handleSubmit(onSubmit)}
+    className="flex flex-col gap-4 p-10"
+  >
+    <h1 className="font-bold text-xl text-center text-black">Update Product</h1>
+    <Input
+      type="text"
+      color="danger"
+      variant="bordered"
+      {...register("title")}
+      label="Title"
+      isRequired
+      className="text-black"
+    />
+    <Input
+      type="text"
+      color="danger"
+      variant="bordered"
+      {...register("description")}
+      label="Description"
+      isRequired
+      className="text-black"
+    />
+    <Input
+      type="number"
+      color="danger"
+      variant="bordered"
+      {...register("price")}
+      label="Price"
+      isRequired
+      min={1}
+      className="text-black"
+    />
+    <Input
+      type="number"
+      color="danger"
+      variant="bordered"
+      {...register("rate")}
+      label="Rate"
+      isRequired
+      min={1}
+      max={5}
+      className="text-black"
+    />
+    <Input
+      type="number"
+      color="danger"
+      variant="bordered"
+      {...register("stock")}
+      label="Stock"
+      isRequired
+      min={1}
+      className="text-black"
+    />
+    <Input
+      type="text"
+      color="danger"
+      variant="bordered"
+      {...register("type")}
+      label="Type"
+      isRequired
+      className="text-black"
+    />
+    <Input
+      type="text"
+      color="danger"
+      variant="bordered"
+      {...register("category")}
+      label="Category"
+      isRequired
+      className="text-black"
+    />
+    <label className="font-bold text-black">Select Colors</label>
+    <div className="h-96 overflow-auto flex flex-col gap-1 bg-gray-200 p-2 rounded-lg">
+      {colors.map((color, index) => (
+        <div key={index}>
+          <input
+            type="checkbox"
+            key={index + 1}
+            value={color}
+            id={color}
+            checked={selectedColors.includes(index + 1)}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              const colorId = index + 1;
+
+              if (checked) {
+                setSelectedColors((prevColors) => [...prevColors, colorId]);
+              } else {
+                setSelectedColors((prevColors) =>
+                  prevColors.filter((id) => id !== colorId)
+                );
+              }
+            }}
+          />
+          <label htmlFor={color} className="text-black"> {color}</label>
+        </div>
+      ))}
+    </div>
+    <label className="font-bold text-black">Select Sizes</label>
+    <div className="h-48 overflow-auto flex flex-col gap-1 bg-gray-200 p-2 rounded-lg">
+      {sizes.map((size, index) => (
+        <div key={index}>
+          <input
+            type="checkbox"
+            key={index + 1}
+            value={size}
+            id={size}
+            checked={selectedSizes.includes(index + 1)}
+            onChange={(e) => {
+              const checked = e.target.checked;
+              const sizeId = index + 1;
+              if (checked) {
+                setSelectedSizes((prevSizes) => [...prevSizes, sizeId]);
+              } else {
+                setSelectedSizes((prevSizes) =>
+                  prevSizes.filter((id) => id !== sizeId)
+                );
+              }
+            }}
+          />
+          <label htmlFor={size} className="text-black"> {size}</label>
+        </div>
+      ))}
+    </div>
+    <Button
+      variant="bordered"
+      className="text-danger hover:bg-danger hover:text-white disabled:cursor-not-allowed disabled:hover:bg-slate-800"
+      type="submit"
+      disabled={isSubmitDisabled}
     >
-      <label>Title</label>
-      <input
-        type="text"
-        placeholder="title"
-        {...register("title")}
-        className="input rounded-md"
-      />
-      <label>Description</label>
-      <input
-        type="text"
-        placeholder="description"
-        {...register("description")}
-        className="input rounded-md"
-      />
-      <label>Price</label>
-      <input
-        type="number"
-        placeholder="price"
-        {...register("price")}
-        className="input rounded-md"
-      />
-      <label>Rate</label>
-      <input
-        type="number"
-        placeholder="rate"
-        {...register("rate")}
-        className="input rounded-md"
-      />
-      <label>Stock</label>
-      <input
-        type="number"
-        placeholder="stock"
-        {...register("stock")}
-        className="input rounded-md"
-      />
-      <label>Type</label>
-      <input
-        type="text"
-        placeholder="type"
-        {...register("type")}
-        className="input rounded-md"
-      />
-      <label>Category</label>
-      <input
-        type="text"
-        placeholder="category"
-        {...register("category")}
-        className="input rounded-md"
-      />
-      <label>Colors</label>
-      <div>
-        <select
-          data-te-select-init
-          multiple
-          onChange={(e) => {
-            const selectedColorIds = Array.from(
-              e.target.selectedOptions,
-              (option) => option.value
-            );
-            setSelectedColors(selectedColorIds.map((id) => parseInt(id, 10)));
-          }}
-          value={selectedColors.map(String)}
-        >
-          {colors.map((color, index) => (
-            <option key={index+1} value={String(index+1)}>
-              {color}
-            </option>
-          ))}
-        </select>
-        <label data-te-select-label-ref>Select Colors</label>
-      </div>
-      <label>Sizes</label>
-      <div>
-        <select
-          data-te-select-init
-          multiple
-          onChange={(e) => {
-            const selectedSizeIds = Array.from(
-              e.target.selectedOptions,
-              (option) => option.value
-            );
-            setSelectedSizes(selectedSizeIds.map((id) => parseInt(id, 10)));
-          }}
-          value={selectedSizes.map(String)}
-        >
-          {sizes.map((size, index) => (
-            <option key={index+1} value={String(index+1)}>
-              {size}
-            </option>
-          ))}
-        </select>
-        <label data-te-select-label-ref>Select Sizes</label>
-      </div>
-      <button className="btn btn-primary" type="submit">
-        Submit
-      </button>
-    </form>
+      {!isSubmitDisabled ? "Submit" : "Make Sure You Selected Color or Size"}
+    </Button>
+  </form>
   );
 };
 

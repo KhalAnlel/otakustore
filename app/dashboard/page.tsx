@@ -1,14 +1,7 @@
 import React from "react";
 import prisma from "@/prisma/client";
-import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-} from "@nextui-org/react";
 import ProductsTable from "./productsTable";
+import Buttons from "./buttons";
 
 const Dashboard = async () => {
   const products = await prisma.product.findMany({
@@ -18,8 +11,9 @@ const Dashboard = async () => {
     },
   });
   return (
-    <div>
+    <div className="dark:bg-default-50 flex flex-col gap-5">
       <ProductsTable products={products} />
+      <Buttons/>
     </div>
   );
 };

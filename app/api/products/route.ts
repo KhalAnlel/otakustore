@@ -63,3 +63,18 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(createdProduct, { status: 200 });
 }
 
+
+export async function DELETE(request: NextRequest) {
+  const product = await prisma.product.findMany();
+
+  if (!product) {
+    return NextResponse.json({ error: "No Products" }, { status: 400 });
+  }
+
+  await prisma.image.deleteMany();
+  await prisma.productColor.deleteMany();
+  await prisma.productSize.deleteMany();
+  await prisma.product.deleteMany();
+
+  return NextResponse.json({});
+}
