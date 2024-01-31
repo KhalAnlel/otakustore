@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/app/common/breadcrumb";
 import MoreProducts from "@/app/common/moreProducts";
 import prisma from "@/prisma/client";
-import { Color, Size } from "@prisma/client";
+import { Color, Product, Size } from "@prisma/client";
 import ProductForm from "./productForm";
 import ProductImages from "./productImages";
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const Product = async ({ params }: Props) => {
-  const product = await prisma.product.findUnique({
+  const product:Product = await prisma.product.findUnique({
     where: { id: parseInt(params.productId) },
     include: {
       ProductColor: true,
@@ -21,7 +21,7 @@ const Product = async ({ params }: Props) => {
     },
   });
 
-  const products = await prisma.product.findMany({
+  const moreProducts = await prisma.product.findMany({
     include: {
       images: true,
     },
@@ -32,8 +32,8 @@ const Product = async ({ params }: Props) => {
   const allColors = await prisma.color.findMany();
   const matchingColors: Color[] = [];
 
-  product.ProductColor.map((color) => {
-    const matchingColor = allColors.find((c) => c.id === color.color_id);
+  product.ProductColor.map((color:Color) => {
+    const matchingColor = allColors.find((c:Color) => c.id === color.color_id);
     if (matchingColor) {
       matchingColors.push(matchingColor);
     }
@@ -42,8 +42,8 @@ const Product = async ({ params }: Props) => {
   const allSizes = await prisma.size.findMany();
   const matchingSizes: Size[] = [];
 
-  product.ProductSize.map((size) => {
-    const matchingSize = allSizes.find((s) => s.id === size.size_id);
+  product.ProductSize.map((size:Size) => {
+    const matchingSize = allSizes.find((s:Size) => s.id === size.size_id);
     if (matchingSize) {
       matchingSizes.push(matchingSize);
     }
@@ -96,7 +96,7 @@ const Product = async ({ params }: Props) => {
         </div>
       </div>
       <div className="mt-20 p-4 sm:p-10">
-        <MoreProducts products={products} />
+        <MoreProducts products={moreProducts} />
       </div>
     </div>
   );

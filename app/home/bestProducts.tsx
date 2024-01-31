@@ -2,9 +2,11 @@ import { Button, Link } from "@nextui-org/react";
 import React from "react";
 import LiftArrow from "../icons/liftArrow";
 import prisma from "@/prisma/client";
+import { Product } from "@prisma/client";
+
 
 const BestProducts = async () => {
-  const bestProducts = await prisma.product.findMany({
+  const bestProducts:Product[] = await prisma.product.findMany({
     orderBy: {
       rate: "asc",
     },

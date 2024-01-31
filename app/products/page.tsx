@@ -8,6 +8,7 @@ import ProductCard from "./productCard";
 import Filters from "../common/filters";
 import Search from "../common/search";
 import Paginating from "../common/paginating";
+import { Product } from "@prisma/client";
 
 interface Props {
   searchParams: {
@@ -38,7 +39,7 @@ const Products = async ({ searchParams }: Props) => {
   const page = parseInt(searchParams.page) || 1;
   const pageSize = parseInt(searchParams.items) || 20;
 
-  const products = await prisma.product.findMany({
+  const products:Product[] = await prisma.product.findMany({
     where,
     orderBy,
     skip: (page - 1) * pageSize,
