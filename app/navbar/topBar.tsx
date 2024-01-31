@@ -16,17 +16,20 @@ import {
   DropdownMenu,
   DropdownTrigger,
   DropdownSection,
+  Avatar,
 } from "@nextui-org/react";
 import categories from "../data/categories";
 import CartIcon from "../icons/cartIcon";
 import FavIcon from "../icons/favIcon";
 import { ThemeSwitcher } from "../common/themeSwitcher";
-import Search from "../common/search";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import DownArrow from "../icons/downArrow";
+import logo from "../logo.jpeg";
+import { useSession } from "next-auth/react";
 
 const TopBar = () => {
+  const { status, data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const favItems = useSelector((state: RootState) => state.fav.items);
@@ -54,14 +57,17 @@ const TopBar = () => {
             href="/"
             className="font-bold text-black dark:text-white uppercase"
           >
-            Otako Store
+            <img src={logo.src} width={"60px"} />
           </Link>
         </NavbarBrand>
       </NavbarContent>
-      <NavbarContent justify="end" className="gap-2">
+      <NavbarContent justify="end" className="gap-4">
+        {status === "unauthenticated" && (
+
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
+        )}
         <NavbarItem>
           <Badge
             color="danger"
@@ -151,6 +157,41 @@ const TopBar = () => {
             </Dropdown>
           </Badge>
         </NavbarItem>
+        {status === "authenticated" && (
+          <NavbarItem>
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar
+                  isBordered
+                  as="button"
+                  className="transition-transform"
+                  src={session.user!.image!}
+                  size="sm"
+                  showFallback
+                  name={session.user?.name!}
+                />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem key="profile" className="h-14 gap-2">
+                  <p className="font-semibold">Signed in as</p>
+                  <p className="font-semibold">{session.user?.email}</p>
+                </DropdownItem>
+                <DropdownItem key="settings">My Settings</DropdownItem>
+                <DropdownItem key="analytics">Analytics</DropdownItem>
+                <DropdownItem key="dashboard" href="/dashboard">
+                  Dashboard
+                </DropdownItem>
+                <DropdownItem key="help_and_feedback">
+                  Help & Feedback
+                </DropdownItem>
+                <DropdownItem key="logout" color="danger" href="/api/auth/signout">
+                  Log Out
+                </DropdownItem>
+                <DropdownItem key="Theme"> <ThemeSwitcher /></DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu>
         {displayedCategories.map((category, index) => (
