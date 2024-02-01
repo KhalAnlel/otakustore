@@ -2,8 +2,15 @@ import React from "react";
 import prisma from "@/prisma/client";
 import ProductsTable from "./productsTable";
 import Buttons from "./buttons";
+import { getServerSession } from "next-auth";
+import authOptions from "../auth/authOptions";
+import { redirect } from "next/navigation";
 
 const Dashboard = async () => {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/');
+  }
   const products = await prisma.product.findMany({
     include: {
       ProductColor: true,
