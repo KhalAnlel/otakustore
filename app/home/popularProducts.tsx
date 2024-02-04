@@ -10,7 +10,6 @@ const PopularProducts = async () => {
       images: true,
     },
   });
-  if(!bestProduct) return null;
   return (
     <div className="flex flex-col mt-20 sm:mt-30 p-10 sm:p-20">
       <div className="flex items-center justify-between">

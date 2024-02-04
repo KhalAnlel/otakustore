@@ -39,8 +39,6 @@ const Products = async ({ searchParams }: Props) => {
   const page = parseInt(searchParams.page) || 1;
   const pageSize = parseInt(searchParams.items) || 20;
 
-  const itemsCount = await prisma.product.count({ where });
-  if(itemsCount===0)return null;
   const products:Product[] = await prisma.product.findMany({
     where,
     orderBy,
@@ -53,6 +51,7 @@ const Products = async ({ searchParams }: Props) => {
     },
   });
 
+  const itemsCount = await prisma.product.count({ where });
 
   return (
     <div className="p-5">
