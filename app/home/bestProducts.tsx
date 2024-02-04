@@ -37,18 +37,18 @@ const BestProducts = async () => {
             key={index}
           >
             <img
-              src={product.images[0].url}
+              src={product?.images[0]?.url}
               className="w-44 h-32 object-contain"
             />
             <div className="flex flex-col gap-4">
               <span className="text-gray-500">Type of Product</span>
               <Link
-                href={"/products/" + product.id}
+                href={"/products/" + product?.id}
                 className="text-sm font-semibold text-black w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{product.title}</p>
+                <p className="line-clamp-2">{product?.title}</p>
               </Link>
-              <span className="text-xl  text-danger">${product.price}</span>
+              <span className="text-xl  text-danger">${product?.price}</span>
             </div>
           </div>
         ))}

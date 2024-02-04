@@ -4,7 +4,7 @@ import LiftArrow from "../icons/liftArrow";
 import prisma from "@/prisma/client";
 
 const PopularProducts = async () => {
-  const bestProduct = await prisma.product.findMany({
+  const popularProduct = await prisma.product.findMany({
     take: 6,
     include: {
       images: true,
@@ -26,21 +26,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[0].images[0].url}
+              src={popularProduct[0]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-52 h-52 object-contain"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[0].type}
+                {popularProduct[0]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[0].id}
+                href={"/products/" + popularProduct[0]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[0].title}</p>
+                <p className="line-clamp-2">{popularProduct[0]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[0].price}
+                ${popularProduct[0]?.price}
               </span>
             </div>
           </div>
@@ -50,21 +51,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[1].images[0].url}
+              src={popularProduct[1]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-24 h-24 object-contain mb-4"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[1].type}
+                {popularProduct[1]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[1].id}
+                href={"/products/" + popularProduct[1]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[1].title}</p>
+                <p className="line-clamp-2">{popularProduct[1]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[1].price}
+                ${popularProduct[1]?.price}
               </span>
             </div>
           </div>
@@ -74,21 +76,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[2].images[0].url}
+              src={popularProduct[2]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-24 h-24 object-contain mb-4"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[2].type}
+                {popularProduct[2]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[2].id}
+                href={"/products/" + popularProduct[2]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[2].title}</p>
+                <p className="line-clamp-2">{popularProduct[2]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[2].price}
+                ${popularProduct[2]?.price}
               </span>
             </div>
           </div>
@@ -98,21 +101,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[3].images[0].url}
+              src={popularProduct[3]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-52 h-52 object-contain"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[3].type}
+                {popularProduct[3]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[3].id}
+                href={"/products/" + popularProduct[3]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[3].title}</p>
+                <p className="line-clamp-2">{popularProduct[3]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[3].price}
+                ${popularProduct[3]?.price}
               </span>
             </div>
           </div>
@@ -122,21 +126,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[4].images[0].url}
+              src={popularProduct[4]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-24 h-24 object-contain mb-4"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[4].type}
+                {popularProduct[4]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[4].id}
+                href={"/products/" + popularProduct[4]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[4].title}</p>
+                <p className="line-clamp-2">{popularProduct[4]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[4].price}
+                ${popularProduct[4]?.price}
               </span>
             </div>
           </div>
@@ -146,21 +151,22 @@ const PopularProducts = async () => {
             className={`w-full h-full justify-between flex flex-col bg-white border-1 items-center p-5`}
           >
             <img
-              src={bestProduct[5].images[0].url}
+              src={popularProduct[5]?.images[0]?.url || "no picture"}
+              alt="no picture"
               className="w-24 h-24 object-contain mb-4"
             />
             <div className="flex flex-col gap-1">
               <span className="text-gray-500 uppercase text-sm text-center">
-                {bestProduct[5].type}
+                {popularProduct[5]?.type}
               </span>
               <Link
-                href={"/products/" + bestProduct[5].id}
+                href={"/products/" + popularProduct[5]?.id}
                 className="text-lg text-center font-semibold text-black line-clamp-2 w-fit hover:text-danger"
               >
-                <p className="line-clamp-2">{bestProduct[5].title}</p>
+                <p className="line-clamp-2">{popularProduct[5]?.title}</p>
               </Link>
               <span className="text-xl text-danger text-center font-bold">
-                ${bestProduct[5].price}
+                ${popularProduct[5]?.price}
               </span>
             </div>
           </div>

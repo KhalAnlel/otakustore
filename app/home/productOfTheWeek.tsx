@@ -20,8 +20,8 @@ const ProductOfTheWeek = async () => {
               <div className="h-[260px] rounded-lg bg-gray-300 dark:bg-transparent mb-4">
                 <img
                   className="w-full h-full object-contain"
-                  src={bestProduct?.images[0].url}
-                  alt="Product Image"
+                  src={bestProduct?.images[0]?.url}
+                  alt="no picture"
                 />
               </div>
             </div>

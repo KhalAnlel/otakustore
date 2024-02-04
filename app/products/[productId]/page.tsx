@@ -50,28 +50,28 @@ const Product = async ({ params }: Props) => {
   });
   return (
     <div className="bg-white p-5">
-      <Breadcrumb title={product.title} />
+      <Breadcrumb title={product?.title} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
             <div className="h-[460px] rounded-lg bg-transparent dark:bg-transparent mb-4">
-              <ProductImages images={product.images} />
+              <ProductImages images={product?.images} />
             </div>
           </div>
           <div className="md:flex-1 px-4 ">
             <h2 className="text-xl font-bold text-gray-800 mt-4 mb-2">
-              Product Title: {product.title}
+              Product Title: {product?.title}
             </h2>
             <div className="flex mb-4">
               <div className="mr-4">
                 <span className="font-bold text-gray-700 ">Price: </span>
-                <span className="text-gray-600 "> ${product.price}</span>
+                <span className="text-gray-600 "> ${product?.price}</span>
               </div>
               <div>
                 <span className="font-bold text-gray-700 ">Availability: </span>
                 <span className="text-gray-600 ">
                   {" "}
-                  {product.stock} In Stock
+                  {product?.stock} In Stock
                 </span>
               </div>
             </div>

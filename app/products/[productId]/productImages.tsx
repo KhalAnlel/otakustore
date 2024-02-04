@@ -45,7 +45,7 @@ export default function ProductImages({ images }: Props) {
         {images.map((image, index) => (
           <SwiperSlide key={index}>
             <img
-              src={image.url}
+              src={image?.url}
               className="object-contain h-96"
               width={"100%"}
             />
