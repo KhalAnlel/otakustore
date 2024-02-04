@@ -61,31 +61,6 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  let fileAssociations = [];
-  for (let i = 0; i < files.length; i++) {
-   const file = files[i];
-   if (!(file instanceof File)) {
-     return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
-   }
-
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = Date.now() + file.name.replaceAll(" ", "_");
-
-    await s3Client.send(
-      new PutObjectCommand({
-        Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
-        Key: filename,
-        Body: buffer,
-        ContentType:"image/*"
-      })
-    );
-
-    fileAssociations.push({
-      product_id: createdProduct.id,
-      url: `https://otakustorebucket.s3.eu-north-1.amazonaws.com/${filename}`,
-    });
- }
-
   // Create the ProductColor associations
   const colorAssociations = color_ids.map((color_id: number) => ({
     product_id: createdProduct.id,
@@ -106,6 +81,30 @@ export async function POST(request: NextRequest) {
   await prisma.productSize.createMany({
     data: sizeAssociations,
   });
+
+  let fileAssociations = [];
+  for (let i = 0; i < files.length; i++) {
+   const file = files[i];
+   if (!(file instanceof File)) {
+     return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
+   }
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filename = Date.now() + file.name.replaceAll(" ", "_");
+
+    await s3Client.send(
+      new PutObjectCommand({
+        Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
+        Key: filename,
+        Body: buffer,
+      })
+    );
+
+    fileAssociations.push({
+      product_id: createdProduct.id,
+      url: `https://otakustorebucket.s3.eu-north-1.amazonaws.com/${filename}`,
+    });
+ }
 
   await prisma.image.createMany({
     data: fileAssociations,

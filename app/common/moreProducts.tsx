@@ -57,17 +57,17 @@ const MoreProducts = ({ products }: Props) => {
             >
               <Link href={"/products/" + product.id} className="m-auto">
                 <Image
-                  alt={product.images[0].url}
+                  alt={product?.images[0]?.url}
                   className="object-contain h-36 w-36"
-                  src={product.images[0].url}
+                  src={product?.images[0]?.url}
                 />
               </Link>
               <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
                 <Link
-                  href={"/products/" + product.id}
+                  href={"/products/" + product?.id}
                   className="text-tiny text-black font-bold hover:text-danger uppercase overflow-hidden"
                 >
-                  <p className="line-clamp-2">{product.title}</p>
+                  <p className="line-clamp-2">{product?.title}</p>
                 </Link>
                 <Button
                   as={"button"}
@@ -77,7 +77,7 @@ const MoreProducts = ({ products }: Props) => {
                   radius="lg"
                   size="sm"
                 >
-                  ${product.price}
+                  ${product?.price}
                 </Button>
               </CardFooter>
             </Card>
