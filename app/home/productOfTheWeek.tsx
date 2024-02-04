@@ -11,6 +11,8 @@ const ProductOfTheWeek = async () => {
       images: true,
     },
   });
+
+  if(!bestProduct) return null;
   return (
     <div className="mt-20">
       <div className="bg-white py-8 mt-20 sm:mt-30">
