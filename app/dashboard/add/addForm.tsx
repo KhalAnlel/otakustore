@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import colors from "@/app/data/colors";
@@ -18,32 +18,73 @@ interface ItemForm {
   category: string;
   color_ids: number[];
   size_ids: number[];
+  files: FileList;
 }
+
 const AddForm = () => {
   const { register, handleSubmit } = useForm<ItemForm>();
   const [selectedColors, setSelectedColors] = useState<number[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<number[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setSelectedFiles(e.target.files);
+    }
+  };
 
   const isSubmitDisabled =
     selectedColors.length === 0 || selectedSizes.length === 0;
 
   const onSubmit = async (data: ItemForm) => {
-    data.price = parseInt(data.price as any, 10);
-    data.rate = parseInt(data.rate as any, 10);
-    data.stock = parseInt(data.stock as any, 10);
-    data.color_ids = selectedColors;
-    data.size_ids = selectedSizes;
+    try {
+      const formData = new FormData();
 
-    toast.success("Item Updated Successfully.", {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
+      // Convert arrays to JSON strings
+      const colorIdsString = JSON.stringify(selectedColors);
+      const sizeIdsString = JSON.stringify(selectedSizes);
 
-    await axios.post("/api/products", data);
+      formData.append("title", data.title);
+      formData.append("description", data.description);
+      formData.append("price", data.price.toString());
+      formData.append("rate", data.rate.toString());
+      formData.append("stock", data.stock.toString());
+      formData.append("category", data.category);
+      formData.append("type", data.type);
+      formData.append("color_ids", colorIdsString);
+      formData.append("size_ids", sizeIdsString);
+
+      if (selectedFiles) {
+        for (let i = 0; i < selectedFiles.length; i++) {
+          formData.append("files", selectedFiles[i]);
+        }
+      }
+
+      // Assuming /api/products returns the newly created product
+      const response = await axios.post("/api/products", formData);
+
+      // Display success message
+      toast.success("Item Updated Successfully.", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    } catch (error) {
+      // Display an error message
+      toast.error("An error occurred. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      // Additional error handling logic if needed
+      console.error(error);
+    }
   };
   return (
     <form
@@ -178,6 +219,14 @@ const AddForm = () => {
             </label>
           </div>
         ))}
+      </div>
+      <div>
+        <input
+          type="file"
+          {...register("files")}
+          onChange={handleFileChange}
+          multiple
+        />
       </div>
       <Button
         variant="bordered"
