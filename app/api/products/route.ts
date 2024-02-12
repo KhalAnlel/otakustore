@@ -90,14 +90,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
     
-    // const buffer = Buffer.from(await file.arrayBuffer());
+    const buffer = Buffer.from(await file.arrayBuffer());
     const filename = Date.now() + file.name.replaceAll(" ", "_");
     
     await s3Client.send(
       new PutObjectCommand({
         Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
         Key: filename,
-        Body: file,
+        Body: buffer,
       })
     );
 
