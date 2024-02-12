@@ -90,26 +90,33 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
     }
     
-    const buffer = Buffer.from(await file.arrayBuffer());
-    const filename = Date.now() + file.name.replaceAll(" ", "_");
-    
-    await s3Client.send(
-      new PutObjectCommand({
-        Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
-        Key: filename,
-        Body: buffer,
-      })
-    );
+    try {
+      const buffer = Buffer.from(await file.arrayBuffer());
+      const filename = Date.now() + file.name.replaceAll(" ", "_");
 
-    fileAssociations.push({
-      product_id: createdProduct.id,
-      url: `https://otakustorebucket.s3.eu-north-1.amazonaws.com/${filename}`,
-    });
- }
+      await s3Client.send(
+        new PutObjectCommand({
+          Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
+          Key: filename,
+          Body: buffer,
+        })
+      );
+
+      fileAssociations.push({
+        product_id: createdProduct.id,
+        url: `https://otakustorebucket.s3.eu-north-1.amazonaws.com/${filename}`,
+      });
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      return NextResponse.json({ error: "Error uploading file" }, { status: 500 });
+    }
+  }
 
   await prisma.image.createMany({
     data: fileAssociations,
   });
+ 
+
 
 
   return NextResponse.json(createdProduct, { status: 200 });
