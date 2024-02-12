@@ -22,7 +22,7 @@ interface ItemForm {
 }
 
 const AddForm = () => {
-  const { register, handleSubmit } = useForm<ItemForm>();
+  const { register, handleSubmit,reset } = useForm<ItemForm>();
   const [selectedColors, setSelectedColors] = useState<number[]>([]);
   const [selectedSizes, setSelectedSizes] = useState<number[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
@@ -72,6 +72,10 @@ const AddForm = () => {
         pauseOnHover: true,
         draggable: true,
       });
+      reset();
+      setSelectedColors([])
+      setSelectedSizes([])
+      setSelectedFiles(null)
     } catch (error) {
       // Display an error message
       toast.error("An error occurred. Please try again.", {
@@ -90,6 +94,7 @@ const AddForm = () => {
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="flex flex-col gap-4 p-10"
+      encType="multipart/form-data"
     >
       <h1 className="font-bold text-xl text-center text-black">
         Update Product

@@ -40,6 +40,11 @@ const animeCategories = [
       "https://m.media-amazon.com/images/I/617XVQ69eyS._AC_UL480_FMwebp_QL65_.jpg",
   },
   {
+    title: "Mouse Pad",
+    imgUrl:
+      "https://m.media-amazon.com/images/I/61KQWQj8i2L.__AC_SX300_SY300_QL70_FMwebp_.jpg",
+  },
+  {
     title: "Mug",
     imgUrl:
       "https://m.media-amazon.com/images/I/71KISOAkb6L._AC_UL480_FMwebp_QL65_.jpg",

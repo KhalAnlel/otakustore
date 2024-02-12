@@ -16,7 +16,7 @@ const PopularProducts = async () => {
         <span className="text-black text-xl font-semibold">
           Popular Products
         </span>
-        <Button color="danger" endContent={<LiftArrow />}>
+        <Button color="danger" endContent={<LiftArrow />} as={'a'} href="/products">
           View All
         </Button>
       </div>

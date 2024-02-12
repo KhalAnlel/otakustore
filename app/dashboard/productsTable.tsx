@@ -17,6 +17,7 @@ import colors from "../data/colors";
 import sizes from "../data/sizes";
 import axios from "axios";
 import { VerticalDotsIcon } from "../icons/VerticalDotsIcon";
+import { useRouter } from "next/navigation";
 
 interface Props {
   products: {
@@ -35,6 +36,15 @@ interface Props {
 }
 
 export default function ProductsTable({ products }: Props) {
+  const router = useRouter();
+  const handleDelete =async (id:number) =>{
+    try{
+      await axios.delete('/api/products/'+id)
+      router.refresh();
+    }catch(error){
+      console.error('Error deleting products:', error);
+    }
+  }
   return (
     <Table aria-label="Example static collection table" className="overflow-auto" classNames={{wrapper:"rounded-none"}}>
       <TableHeader>
@@ -88,7 +98,7 @@ export default function ProductsTable({ products }: Props) {
                       key="delete"
                       className="text-danger"
                       color="danger"
-                      onClick={()=>{axios.delete('/api/products/'+product.id)}}
+                      onClick={() => handleDelete(product.id)}
                     >
                       Delete Product
                     </DropdownItem>

@@ -16,6 +16,18 @@ const BottomBar = () => {
   const otherCategories = categories.slice(6, 14);
   return (
     <div className="hidden gap-8 justify-center bg-silver dark:bg-midnightblue md:flex">
+       <Button
+          key={"all"}
+          className="hover:text-danger p-0 px-5"
+          variant="light"
+          data-hover="transparent"
+          data-focus="false"
+          data-focus-visible="false"
+        >
+          <Link href={"/products"}>
+           All
+          </Link>
+        </Button>
       {displayedCategories.map((category, index) => (
         <Button
           key={index}

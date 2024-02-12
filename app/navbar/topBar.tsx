@@ -194,6 +194,21 @@ const TopBar = () => {
         )}
       </NavbarContent>
       <NavbarMenu>
+      <NavbarMenuItem key={"all"}>
+            <Button
+              className="hover:text-danger uppercase dark:text-white flex justify-start"
+              variant="light"
+              data-hover="transparent"
+              data-focus="false"
+              data-focus-visible="false"
+            >
+              <Link
+                href={"/products"}
+              >
+                All Products
+              </Link>
+            </Button>
+          </NavbarMenuItem>
         {displayedCategories.map((category, index) => (
           <NavbarMenuItem key={index}>
             <Button
