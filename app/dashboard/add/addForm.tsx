@@ -61,7 +61,9 @@ const AddForm = () => {
       }
 
       // Assuming /api/products returns the newly created product
-      const response = await axios.post("/api/products", formData);
+      const response = await axios.post("/api/products", formData,{
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
 
       // Display success message
       toast.success("Item Updated Successfully.", {

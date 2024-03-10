@@ -4,13 +4,7 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
-const s3Client = new S3Client({
-  region: process.env.NEXT_AWS_S3_REGION!,
-  credentials: {
-    accessKeyId: process.env.NEXT_AWS_S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.NEXT_AWS_S3_SECRET_ACCESS_KEY_ID!,
-  },
-});
+const s3Client = new S3Client({ region: process.env.AWS_REGION });
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -95,7 +89,7 @@ export async function POST(request: NextRequest) {
 
       await s3Client.send(
         new PutObjectCommand({
-          Bucket: process.env.NEXT_AWS_S3_BUCKET_NAME!,
+          Bucket: process.env.AWS_BUCKET_NAME!,
           Key: filename,
           Body: buffer,
         })
